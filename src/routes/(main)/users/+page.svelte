@@ -113,6 +113,13 @@
 							'bank_account_no',
 							'bank_name'
 						]
+					},
+					{
+						title: 'Admin',
+						list: [
+							'temp_pin',
+							
+						]
 					}
 				],
 				columns: [
