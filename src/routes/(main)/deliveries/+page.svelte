@@ -158,7 +158,7 @@
 	</svelte:fragment>
 </Modal>
 <Datatable
-	data={{appendQueries: {merchant_id: "null"},
+	data={{appendQueries: {merchant_id: "null", country_id: data.country_id},
 		inputs: inputs,
 		join_statements: JSON.stringify([
 			// { corporate_account: 'corporate_account' },

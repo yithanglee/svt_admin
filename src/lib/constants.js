@@ -8,6 +8,8 @@ export const MENUS = [
             { path: '/admin/role', title: 'Role', icon: 'camera-foto-solid' },
 
             { path: '/admin/app_route', title: 'Route', icon: 'camera-foto-solid' },
+            { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
+      
         ]
     },
     {

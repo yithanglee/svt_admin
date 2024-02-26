@@ -94,7 +94,8 @@
 			{ label: 'From', data: 'username', through: ['user'] },
 			{ label: 'IC Name', data: 'fullname', through: ['user'] },
 			{ label: 'Amount', data: 'amount' },
-			{ label: 'Remarks', data: 'remarks' }
+			{ label: 'Remarks', data: 'remarks' },
+			{ label: 'Bank', data: 'bank' }
 		]
 	}}
 />

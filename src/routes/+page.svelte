@@ -29,7 +29,7 @@
 				username: username,
 				token: JSON.stringify(res.res),
 				role_app_routes: res.role_app_routes,
-				id: res.user_id
+				id: res.user_id 
 			});
 			let cookieToken = await Cookies.get('_commerce_front_key2');
 			console.log("check cookite js")

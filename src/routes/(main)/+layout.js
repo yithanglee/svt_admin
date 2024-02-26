@@ -41,7 +41,7 @@ export async function load({ locals }) {
             console.log(res)
             if (res != null) {
                 session.login({
-
+                    country_id: res.user.country_id,
                     username: res.user.username,
                     token: cookieToken,
                     role_app_routes: res.user.role.app_routes,
