@@ -41,8 +41,11 @@
 		return edate + ' ' + etime;
 	}
 	function showPreview(data, key) {
-		
 		return data[key];
+	}
+	function showPrefix(data){
+		console.info(data.toString().includes("-"))
+		return data.toString().includes("-") ? data : "+" + data ;
 	}
 </script>
 
@@ -53,18 +56,17 @@
 		{item[col.subtitle.data]}
 	</small>
 {:else if col.showPreview}
-{#if item[col.data] != null }
-<Button
-on:click={() => {
-	img_url = item[col.data]
-	previewModal = true;
-}}>Preview</Button
->
-{:else}
-<Button disabled>Preview</Button
-	>
-{/if}
-	
+	{#if item[col.data] != null}
+		<Button
+			on:click={() => {
+				img_url = item[col.data];
+				previewModal = true;
+			}}>Preview</Button
+		>
+	{:else}
+		<Button disabled>Preview</Button>
+	{/if}
+
 	<!-- {showPreview(item, col.data)} -->
 {:else if col.formatDateTime}
 	{formatDateTime(item, col.data, col.offset)}
@@ -72,6 +74,8 @@ on:click={() => {
 	{checkAssoc(item, col.data, col.through)}
 {:else if col.color != null}
 	<Badge class="capitalize" color={badgeColor(item[col.data], col.color)}>{item[col.data]}</Badge>
+{:else if col.showPrefix }
+	<div>{showPrefix(item[col.data])}</div>
 {:else if col.showImg != null}
 	<div style="width: 80px;">
 		<Img class="rounded-lg" src="{url}{item[col.data]}" />

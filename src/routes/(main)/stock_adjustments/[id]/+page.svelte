@@ -7,7 +7,8 @@
 </script>
 
 <Datatable
-	data={{appendQueries: {stock_adjustment_id: data.id},
+	data={{
+		appendQueries: { stock_adjustment_id: data.id },
 		showNew: true,
 		canDelete: true,
 		//   appendQueries: { : data. },
@@ -20,8 +21,21 @@
 				title: 'General',
 				list: [
 					'id',
-					'qty',
-					{label: 'stock_adjustment_id', hidden: true, value: data.id},
+
+					{
+						label: 'qty',
+						customValidation: true,
+						fn: (val) => {
+							console.info(val);
+							if (val.includes('+') || val.includes('-')) {
+							} else {
+								alert('please input +/- operators!');
+								var dom = document.getElementsByName('StockAdjustmentLine[qty]')[0];
+								dom.value = null;
+							}
+						}
+					},
+					{ label: 'stock_adjustment_id', hidden: true, value: data.id },
 					{
 						label: 'stock_id',
 						selection: 'Stock',
@@ -45,7 +59,7 @@
 		],
 		columns: [
 			{ label: 'ID', data: 'id' },
-			{ label: 'Qty', data: 'qty' },
+			{ label: 'Qty', data: 'qty' , showPrefix: true},
 			{ label: 'Stock', data: 'name', through: ['stock'] }
 			// { label: 'URL', data: 'route', through: ['app_route'] }
 		]
