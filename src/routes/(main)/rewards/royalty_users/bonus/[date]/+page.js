@@ -8,18 +8,9 @@ export const load = async ({ fetch, params, parent }) => {
     const apiData = params;
     const queryString = buildQueryString(apiData);
 
-    const response = await fetch(url2 + '/svt_api/webhook' + `?${queryString}&scope=royalty_bonus`, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    if (response.ok) {
-       var list = await response.json() ; 
-       console.log(list)
-        return {
-            bonus: list,
-         
-        };
-    }
+    return {
+        date: params.date,
+     
+    };
     
 };
