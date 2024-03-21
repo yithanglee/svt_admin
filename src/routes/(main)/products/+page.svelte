@@ -43,7 +43,11 @@
 					{ label: 'desc', editor2: true },
 					{ label: 'img_url', upload: true }
 				]
-			}
+			},
+			{
+				title: 'Admin',
+				list: [{label: 'override_pv', boolean: true}, 'override_pv_amount']
+			},
 		],
 		buttons: [
 			{ name: 'Countries', onclickFn: viewCountries },
@@ -54,7 +58,9 @@
 			{ label: 'ID', data: 'id' },
 			{ label: 'Name', data: 'name' },
 			{ label: 'Retail Price (RP)', data: 'retail_price' },
-			{ label: 'Point Value', data: 'point_value' }
+			{ label: 'Point Value', data: 'point_value' },
+			{ label: 'Override?', data: 'override_pv' },
+			{ label: 'PV', data: 'override_pv_amount' }
 			// { label: 'Country', data: 'name', through: ['country'] }
 		]
 	}}

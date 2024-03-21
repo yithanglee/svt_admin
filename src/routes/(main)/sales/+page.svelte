@@ -8,7 +8,14 @@
 
 	let inputs = data.inputs;
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
-
+	function showCondition2(data) {
+		var bool = false;
+		
+		if (data.status == 'pending_payment') {
+			bool = true;
+		}
+		return bool;
+	}
 	function showCondition(data) {
 		var bool = false;
 		if (data.payment == null ) {
@@ -17,11 +24,28 @@
 		if (data.payment.billplz_code != null) {
 			bool = true;
 		}
+		
 		return bool;
 	}
 	function downloadCO(data, checkPage, confirmModal) {
 		window.open( url + "/pdf?id=" + data.id, '_blank').focus();
 
+	}
+	function approveTransfer2(data, checkPage, confirmModal) {
+		console.log(data);
+		console.log('transfer approved!');
+
+		confirmModal(true, 'Are you sure to manually approve this sale?', () => {
+			postData(
+				{ scope: 'manual_approve_admin', id: data.id },
+				{
+					endpoint: url + '/svt_api/webhook',
+					successCallback: () => {
+						checkPage();
+					}
+				}
+			);
+		});
 	}
 	function approveTransfer(data, checkPage, confirmModal) {
 		console.log(data);
@@ -51,7 +75,10 @@
 		search_queries: ['a.id|b.username|b.fullname'],
 		model: 'Sale',
 		preloads: ['user', 'sales_person', 'payment'],
-		buttons: [{ name: 'Download CO (PDF)', onclickFn: downloadCO } , { name: 'Manual Approve', onclickFn: approveTransfer, showCondition: showCondition }],
+		buttons: [
+			{ name: 'Download CO (PDF)', onclickFn: downloadCO } , 
+			{ name: 'Manual Approve', onclickFn: approveTransfer, showCondition: showCondition } , 
+			{ name: 'Manual Approve', onclickFn: approveTransfer2, showCondition: showCondition2 }],
 		customCols: [
 			{
 				title: 'Order',
