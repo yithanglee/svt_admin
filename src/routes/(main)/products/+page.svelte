@@ -46,7 +46,7 @@
 			},
 			{
 				title: 'Admin',
-				list: [{label: 'override_pv', boolean: true}, 'override_pv_amount']
+				list: [{label: 'override_pv', boolean: true}, 'override_pv_amount', 'override_perc']
 			},
 		],
 		buttons: [
@@ -60,7 +60,8 @@
 			{ label: 'Retail Price (RP)', data: 'retail_price' },
 			{ label: 'Point Value', data: 'point_value' },
 			{ label: 'Override?', data: 'override_pv' },
-			{ label: 'PV', data: 'override_pv_amount' }
+			{ label: 'PV for DRP', data: 'override_pv_amount' },
+			{ label: 'Register Perc', data: 'override_perc' }
 			// { label: 'Country', data: 'name', through: ['country'] }
 		]
 	}}
