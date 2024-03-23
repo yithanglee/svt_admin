@@ -22,6 +22,9 @@
 			return bool;
 		}
 		if (data.payment.billplz_code != null) {
+			if (data.status != "pending_payment") {
+				return false;
+			}
 			bool = true;
 		}
 		
@@ -77,7 +80,7 @@
 		preloads: ['user', 'sales_person', 'payment'],
 		buttons: [
 			{ name: 'Download CO (PDF)', onclickFn: downloadCO } , 
-			{ name: 'Manual Approve', onclickFn: approveTransfer, showCondition: showCondition } , 
+			{ name: 'Manual Approve (Razer)', onclickFn: approveTransfer, showCondition: showCondition } , 
 			{ name: 'Manual Approve', onclickFn: approveTransfer2, showCondition: showCondition2 }],
 		customCols: [
 			{
