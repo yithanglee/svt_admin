@@ -18,7 +18,7 @@
 		customCols: [
 			{
 				title: 'General',
-				list: ['id', 'name', 'currency', 'conversion', { label: 'img_url', upload: true }]
+				list: ['id', 'name', 'alias', 'currency', 'conversion', { label: 'img_url', upload: true }]
 			}
 		],
 		columns: [
