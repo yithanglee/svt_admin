@@ -28,6 +28,7 @@
 				data: 'name',
 				subtitle: { label: 'Conversion', data: 'conversion' }
 			},
+			{ label: 'Alias', data: 'alias' },
 			{ label: 'Currency', data: 'currency' }
 		]
 	}}
