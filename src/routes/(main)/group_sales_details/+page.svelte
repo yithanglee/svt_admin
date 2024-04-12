@@ -18,7 +18,7 @@
 			{ from_user: 'from_user' },
 			{ gs_summary: 'gs_summary' }
 		]),
-		search_queries: ['b.username'],
+		search_queries: ['b.username', 'a.sales_id'],
 		model: module,
 		preloads: ['to_user', 'from_user', 'gs_summary'],
 		customCols: [

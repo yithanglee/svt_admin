@@ -87,7 +87,8 @@
 
 	async function fetchData(pageNumber) {
 		// start transform the query
-
+		var currentPage = parseInt($page.url.searchParams.get('page'));
+		console.info(currentPage);
 		apiData.additional_search_queries = buildSearchString(query);
 
 		apiData.start = ((pageNumber == null ? 1 : pageNumber) - 1) * itemsPerPage;
@@ -110,8 +111,41 @@
 
 				pages = [];
 
-				for (var i = 0; i < totalPages; i++) {
-					pages.push({ name: i + 1, href: `?page=` + (i + 1) });
+				if (totalPages <= 10) {
+					for (let i = 1; i <= totalPages; i++) {
+						pages.push({ name: i, href: `?page=${i}` });
+					}
+				} else {
+					let middle = currentPage + 3;
+					let firstPages = [1, 2, 3];
+
+					let lastPages = [totalPages - 2, totalPages - 1, totalPages];
+					let middlePages = [ middle - 2, middle - 1, middle, middle + 1, middle + 2];
+
+
+					middlePages = middlePages.filter(
+						(page) => !firstPages.includes(page) && !lastPages.includes(page)
+					).filter((v,i) => {
+						return v <= totalPages;
+					});
+
+					pages = [...firstPages];
+
+					if (middlePages.length > 0 && middlePages[0] - firstPages[firstPages.length - 1] > 1) {
+						pages.push({ name: '...', href: `` }); // Placeholder between first and middle pages
+					}
+
+					pages.push(...middlePages);
+
+					if (lastPages[0] - pages[pages.length - 1] > 1) {
+						pages.push({ name: '...', href: `` }); // Placeholder between middle and last pages
+					}
+
+					pages.push(...lastPages);
+
+					pages = pages.map((page) =>
+						typeof page === 'number' ? { name: page, href: `?page=${page}` } : page
+					);
 				}
 			} else {
 				console.error('API request failed');
@@ -120,10 +154,16 @@
 			console.error('An error occurred', error);
 		}
 	}
+	const currentPage = parseInt($page.url.searchParams.get('page')) ;
+
 	const previous = () => {
+
+		fetchData(currentPage - 1);
 		alert('Previous btn clicked. Make a call to your server to fetch data.');
 	};
 	const next = () => {
+
+		fetchData(currentPage + 1);
 		alert('Next btn clicked. Make a call to your server to fetch data.');
 	};
 	onMount(() => {
