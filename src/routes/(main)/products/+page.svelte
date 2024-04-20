@@ -32,7 +32,7 @@
 		customCols: [
 			{
 				title: 'General',
-				list: ['id', 'name']
+				list: ['name']
 			},
 			{
 				title: 'Price',
@@ -46,8 +46,14 @@
 			},
 			{
 				title: 'Admin',
-				list: [{label: 'override_pv', boolean: true}, 'override_pv_amount', 'override_perc']
-			},
+				list: [
+					{ label: 'override_pv', alt_name: "Override Payment DRP", boolean: true },
+					'override_perc',
+					{ label: 'override_special_share_payout', boolean: true },
+					'override_special_share_payout_perc',
+					'id'
+				]
+			}
 		],
 		buttons: [
 			{ name: 'Countries', onclickFn: viewCountries },
@@ -59,9 +65,41 @@
 			{ label: 'Name', data: 'name' },
 			{ label: 'Retail Price (RP)', data: 'retail_price' },
 			{ label: 'Point Value', data: 'point_value' },
-			{ label: 'Override?', data: 'override_pv' },
-			{ label: 'PV for DRP', data: 'override_pv_amount' },
-			{ label: 'Register Perc', data: 'override_perc' }
+			{
+				label: 'Override?',
+				data: 'override_pv',
+				isBadge: true,
+				color: [
+					{
+						key: false,
+						value: 'yellow'
+					},
+
+					{
+						key: true,
+						value: 'green'
+					}
+				]
+			},
+			{ label: 'Register Perc', data: 'override_perc' },
+			{
+				label: 'Override Special Share?',
+				data: 'override_special_share_payout',
+				isBadge: true,
+				color: [
+					{
+						key: false,
+						value: 'yellow'
+					},
+
+					{
+						key: true,
+						value: 'green'
+					}
+				]
+			},
+			{ label: 'Special Share DRP Perc', data: 'override_special_share_payout_perc' }
+
 			// { label: 'Country', data: 'name', through: ['country'] }
 		]
 	}}

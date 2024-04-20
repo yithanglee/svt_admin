@@ -16,6 +16,13 @@
 		console.log('transfer approved!');
 		goto('/ewallets/withdrawal_batches/' + data.id + '/wallet_withdrawals');
 	}
+	function showCondition(data) {
+		var bool = true;
+		if (data.paid_date != null) {
+			bool = false;
+		}
+		return bool;
+	}
 	function approveTransfer(data, checkPage, confirmModal) {
 		console.log(data);
 		console.log('transfer approved!');
@@ -56,7 +63,7 @@
 			}
 		],
 		buttons: [
-			{ name: 'Approve', onclickFn: approveTransfer },
+			{ name: 'Approve', onclickFn: approveTransfer , showCondition: showCondition},
 			{ name: 'View', onclickFn: viewTransfer }
 		],
 		columns: [

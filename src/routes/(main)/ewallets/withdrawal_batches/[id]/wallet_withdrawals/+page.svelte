@@ -5,16 +5,17 @@
 	export let data;
 	onMount(async () => {});
 
-	let module = data.module, batch_id = data.id,
+	let module = data.module,
+		batch_id = data.id,
 		inputs = data.inputs;
 	import { buildQueryString, postData } from '$lib/index.js';
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
-
 </script>
 
 <Datatable
-	data={{appendQueries: {withdrawal_batch_id: data.id},
+	data={{
+		appendQueries: { withdrawal_batch_id: data.id },
 		inputs: inputs,
 		join_statements: JSON.stringify([
 			// { corporate_account: 'corporate_account' },
@@ -40,7 +41,7 @@
 						search_queries: ['a.code'],
 						newData: 'code',
 						title_key: 'code'
-					},
+					}
 					// { label: 'is_approved', boolean: true }
 				]
 			}
@@ -48,7 +49,7 @@
 		buttons: [],
 		columns: [
 			{ label: 'ID', data: 'id' },
-			{ label: 'Bank', data: 'bank_name' },	
+			{ label: 'Bank', data: 'bank_name' },
 			{ label: 'Acc No', data: 'bank_account_number' },
 			{
 				label: 'Paid?',
@@ -68,7 +69,12 @@
 			},
 
 			{ label: 'From', data: 'username', through: ['user'] },
-			{ label: 'Amount', data: 'amount' },
+			{ label: 'Request (USD)', data: 'amount', className: 'text-right' },
+			{ label: 'Processing Fee (USD)', data: 'processing_fee', className: 'text-right' },
+			{ label: 'Request (MYR)', data: 'amount_in_myr', className: 'text-right' },
+
+			{ label: 'Processing Fee (MYR)', data: 'processing_fee_in_myr', className: 'text-right' },
+			{ label: 'Pay Member (MYR)', data: 'final_amount_in_myr', className: 'text-right' },
 			{ label: 'Remarks', data: 'remarks' }
 		]
 	}}

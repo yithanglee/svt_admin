@@ -18,8 +18,12 @@
 		input = { key: key.label, value: 'id' };
 		console.log(input);
 	}
+	let alt_name = input.key.replace('_', ' ');
 	if (key.editor == true) {
 		editorData = data[input.key] != null ? data[input.key] : '';
+	}
+	if (key.alt_name != null) {
+		alt_name = key.alt_name
 	}
 	function inputName(key) {
 		return module + '[' + key + ']';
@@ -30,14 +34,14 @@
 	{#if key.expose != null}
 		<div class="w-full sm:w-1/3 mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input type="text" name={inputName(input.key)} bind:value={data[input.key]} />
 			</Label>
 		</div>
 	{:else if key.customValidation != null}
 		<div class="w-full sm:w-1/3 mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input
 					type="text"
 					name={inputName(input.key)}
@@ -51,7 +55,7 @@
 	{:else if key.multiSelection != null}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2 mb-3">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 			</Label>
 			<MultiSelection
 				{data}
@@ -69,7 +73,7 @@
 	{:else if key.selection != null}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2 mb-3">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 			</Label>
 			<Dropdown
 				{data}
@@ -86,7 +90,7 @@
 	{:else if key.editor == true}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2 mb-3">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input type="hidden" name={inputName(input.key)} bind:value={editorData} />
 			</Label>
 			<TinyMCEditor
@@ -97,7 +101,7 @@
 	{:else if key.editor2 == true}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input type="hidden" name={inputName(input.key)} bind:value={data[input.key]} />
 			</Label>
 
@@ -106,14 +110,14 @@
 	{:else if key.gallery == true}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Gallery {input} child={key.child} {module} name={input.key} />
 			</Label>
 		</div>
 	{:else if key.upload == true}
 		<div class="w-full mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input type="file" id={input.key} name={inputName(input.key)} />
 			</Label>
 		</div>
@@ -122,7 +126,7 @@
 			<Label class="space-y-2">
 				{#if data[input.key]}
 					<Checkbox id={input.key} checked aria-data={data[input.key]} name={inputName(input.key)}
-						><span class="ms-2 capitalize text-xl">{input.key.replace('_', ' ')}</span></Checkbox
+						><span class="ms-2 capitalize text-xl">{alt_name}</span></Checkbox
 					>
 				{:else}
 					<Checkbox id={input.key} aria-data={data[input.key]} name={inputName(input.key)}
@@ -147,7 +151,7 @@
 	{:else}
 		<div class="w-full sm:w-1/3 mx-4 my-2">
 			<Label class="space-y-2">
-				<span class="capitalize">{input.key.replace('_', ' ')}</span>
+				<span class="capitalize">{alt_name}</span>
 				<Input type="text" name={inputName(input.key)} bind:value={data[input.key]} />
 			</Label>
 		</div>

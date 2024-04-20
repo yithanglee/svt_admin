@@ -275,7 +275,7 @@
 		{#each items as item}
 			<TableBodyRow>
 				{#each columns as col}
-					<TableBodyCell class="font-light dark:text-white">
+					<TableBodyCell class="font-light dark:text-white {col.className || ""}">
 						<DataCell {item} {col} />
 					</TableBodyCell>
 				{/each}
