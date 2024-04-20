@@ -130,7 +130,7 @@
 					>
 				{:else}
 					<Checkbox id={input.key} aria-data={data[input.key]} name={inputName(input.key)}
-						><span class="ms-2 capitalize text-xl">{input.key.replace('_', ' ')}</span></Checkbox
+						><span class="ms-2 capitalize text-xl">{alt_name}</span></Checkbox
 					>
 				{/if}
 			</Label>
@@ -139,7 +139,7 @@
 		<Input type="hidden" name={inputName(input.key)} bind:value={data[input.key]} />
 	{:else if input.value == 'binary'}
 		<div class="w-full mx-4 my-2">
-			<Label class="mb-2 capitalize">{input.key.replace('_', ' ')}</Label>
+			<Label class="mb-2 capitalize">{alt_name}</Label>
 			<Textarea
 				placeholder="Content"
 				class="editable"
