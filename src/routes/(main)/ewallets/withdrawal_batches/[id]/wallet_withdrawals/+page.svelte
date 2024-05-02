@@ -49,6 +49,8 @@
 		buttons: [],
 		columns: [
 			{ label: 'ID', data: 'id' },
+			{ label: 'Timestamp', data: 'inserted_at', formatDateTime: true, offset: 8 },
+		
 			{ label: 'Bank', data: 'bank_name' },
 			{ label: 'Acc No', data: 'bank_account_number' },
 			{
