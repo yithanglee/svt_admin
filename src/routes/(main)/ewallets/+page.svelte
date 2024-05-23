@@ -22,7 +22,7 @@
 			// { corporate_account: 'corporate_account' },
 			{ user: 'user' }
 		]),
-		search_queries: ['b.username'],
+		search_queries: ['b.username', 'b.fullname'],
 		model: module,
 		preloads: ['user'],
 		customCols: [

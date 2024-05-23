@@ -29,6 +29,7 @@
 		],
 		columns: [
 			{ label: 'ID', data: 'id' },
+			{ label: 'gs_summary_id', data: 'gs_summary_id' },
 			{ label: 'Day', data: 'day', through: ['gs_summary'] },
 			{ label: 'Month', data: 'month', through: ['gs_summary'] },
 			{ label: 'Year', data: 'year', through: ['gs_summary'] },
