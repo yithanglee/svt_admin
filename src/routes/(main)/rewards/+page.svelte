@@ -27,7 +27,8 @@
 		],
 		columns: [
 			{ label: 'ID', data: 'id' },
-
+			
+			{ label: 'Sales ID', data: 'sales_id' },
 			{
 				label: 'Paid?',
 				data: 'is_paid',
