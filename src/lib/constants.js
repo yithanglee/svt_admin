@@ -1,6 +1,7 @@
 export const PHX_ENDPOINT = import.meta.env.VITE_PHX_ENDPOINT
 export const PHX_WS_PROTOCOL = import.meta.env.VITE_PHX_WS_PROTOCOL
 export const PHX_HTTP_PROTOCOL = import.meta.env.VITE_PHX_HTTP_PROTOCOL
+export const PHX_COOKIE = import.meta.env.VITE_PHX_COOKIE
 export const MENUS = [
     {
         path: '#', title: 'Admin', icon: null, children: [
@@ -58,6 +59,13 @@ export const MENUS = [
             { path: '/users/placements', title: 'Placements', icon: 'book-solid' }
         ]
     },
+    {
+        path: '#', title: 'Instalments', icon: null, children: [
+
+            { path: '/instalments', title: 'Instalments', icon: 'book-solid' },
+            { path: '/member_instalments', title: 'Member Instalments', icon: 'book-solid' }
+        ]
+    },
     { path: '/ranks', title: 'Rank', icon: 'book-solid' },
     {
         path: '#', title: 'Ewallets', icon: null, children: [
@@ -66,7 +74,8 @@ export const MENUS = [
             { path: '/ewallets', title: 'Ewallets', icon: 'book-solid' },
             { path: '/ewallets/transfers', title: 'Transfers', icon: 'camera-foto-solid' },
             { path: '/ewallets/register_points', title: 'Register Points', icon: 'camera-foto-solid' },
-
+            { path: '/ewallets/pay_instalment', title: 'Pay Instalment', icon: 'book-solid' }
+      
         ]
     },
 

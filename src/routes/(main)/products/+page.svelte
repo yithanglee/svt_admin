@@ -8,13 +8,23 @@
 	import { buildQueryString, postData } from '$lib/index.js';
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
+
+	function viewInstalmentProducts(data) {
+		goto('/products/' + data.id + '/instalment_products');
+	}
 	function viewStocks(data) {
 		goto('/products/' + data.id + '/stocks');
 	}
 	function viewCountries(data) {
 		goto('/products/' + data.id + '/countries');
 	}
-
+	function showCondition(data) {
+		var bool = false;
+		if (data.is_instalment  ) {
+			bool = true;
+		}
+		return bool;
+	}
 	onMount(async () => {});
 
 	let module = data.module,
@@ -28,11 +38,13 @@
 		inputs: inputs,
 		search_queries: null,
 		model: module,
-		preloads: [],
+		preloads: ['instalment', 'first_payment_product'],
 		customCols: [
 			{
 				title: 'General',
-				list: ['name']
+				list: [
+					'name'
+				]
 			},
 			{
 				title: 'Price',
@@ -47,15 +59,32 @@
 			{
 				title: 'Admin',
 				list: [
-					{ label: 'override_pv', alt_name: "Override Payment DRP", boolean: true },
+					{ label: 'override_pv', alt_name: 'Override Payment DRP', boolean: true },
 					'override_perc',
 					{ label: 'override_special_share_payout', boolean: true },
 					'override_special_share_payout_perc',
-					'id'
+					'id',
+					{ label: 'is_instalment', alt_name: 'Set as instalment', boolean: true },
+					{
+						label: 'instalment_id',
+						selection: 'Instalment',
+						customCols: null,
+						search_queries: ['a.name'],
+						newData: 'name',
+						title_key: 'name'
+					},
+					{
+						label: 'first_payment_product_id',
+						selection: 'Product',
+						customCols: null,
+						search_queries: ['a.name'],
+						newData: 'name',
+						title_key: 'name'
+					}
 				]
 			}
 		],
-		buttons: [
+		buttons: [			{ name: 'Freebies', onclickFn: viewInstalmentProducts, showCondition: showCondition },
 			{ name: 'Countries', onclickFn: viewCountries },
 			{ name: 'Stocks', onclickFn: viewStocks }
 		],
