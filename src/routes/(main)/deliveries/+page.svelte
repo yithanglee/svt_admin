@@ -9,8 +9,9 @@
 
 	export let data;
 
-	let inputs = data.inputs, checkPage, 
-		fdata = { pick_up_point_id: 1 , shipping_ref: null},
+	let inputs = data.inputs,
+		checkPage,
+		fdata = { pick_up_point_id: 1, shipping_ref: null },
 		formModal = false;
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
 
@@ -85,7 +86,13 @@
 	}
 	function tryPost() {
 		postData(
-			{ scope: 'mark_do', id: fdata.id, shipping_ref: fdata.shipping_ref, location_id: fdata.pick_up_point_id, status: 'sent' },
+			{
+				scope: 'mark_do',
+				id: fdata.id,
+				shipping_ref: fdata.shipping_ref,
+				location_id: fdata.pick_up_point_id,
+				status: 'sent'
+			},
 			{
 				endpoint: url + '/svt_api/webhook',
 				successCallback: () => {
@@ -158,13 +165,18 @@
 	</svelte:fragment>
 </Modal>
 <Datatable
-	data={{appendQueries: {merchant_id: "null", country_id: data.country_id},
+	data={{
+		appendQueries: { merchant_id: 'null', country_id: data.country_id },
 		inputs: inputs,
 		join_statements: JSON.stringify([
 			// { corporate_account: 'corporate_account' },
 			{ user: 'user' }
 		]),
-		search_queries: ['a.id|b.username|b.fullname'],
+		search_queries: [
+			'a.id|b.username|b.fullname|a.is_instalment=false',
+			
+			'a.has_freebies=true'
+		],
 		model: 'Sale',
 		preloads: ['user', 'sales_person', 'payment', 'country'],
 		buttons: [

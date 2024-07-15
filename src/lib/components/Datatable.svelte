@@ -120,14 +120,13 @@
 					let firstPages = [1, 2, 3];
 
 					let lastPages = [totalPages - 2, totalPages - 1, totalPages];
-					let middlePages = [ middle - 2, middle - 1, middle, middle + 1, middle + 2];
+					let middlePages = [middle - 2, middle - 1, middle, middle + 1, middle + 2];
 
-
-					middlePages = middlePages.filter(
-						(page) => !firstPages.includes(page) && !lastPages.includes(page)
-					).filter((v,i) => {
-						return v <= totalPages;
-					});
+					middlePages = middlePages
+						.filter((page) => !firstPages.includes(page) && !lastPages.includes(page))
+						.filter((v, i) => {
+							return v <= totalPages;
+						});
 
 					pages = [...firstPages];
 
@@ -154,15 +153,13 @@
 			console.error('An error occurred', error);
 		}
 	}
-	const currentPage = parseInt($page.url.searchParams.get('page')) ;
+	const currentPage = parseInt($page.url.searchParams.get('page'));
 
 	const previous = () => {
-
 		fetchData(currentPage - 1);
 		alert('Previous btn clicked. Make a call to your server to fetch data.');
 	};
 	const next = () => {
-
 		fetchData(currentPage + 1);
 		alert('Next btn clicked. Make a call to your server to fetch data.');
 	};
@@ -233,11 +230,13 @@
 				{#if data.search_queries != []}
 					{#each data.search_queries as search_query}
 						{#each search_query.split('|') as single_query}
-							<Input
-								id="default-input"
-								bind:value={query['' + single_query + '']}
-								placeholder={single_query.split('.')[1]}
-							/>
+							{#if !single_query.includes('=')}
+								<Input
+									id="default-input"
+									bind:value={query['' + single_query + '']}
+									placeholder={single_query.split('.')[1]}
+								/>
+							{/if}
 						{/each}
 					{/each}
 				{/if}
@@ -275,7 +274,7 @@
 		{#each items as item}
 			<TableBodyRow>
 				{#each columns as col}
-					<TableBodyCell class="font-light dark:text-white {col.className || ""}">
+					<TableBodyCell class="font-light dark:text-white {col.className || ''}">
 						<DataCell {item} {col} />
 					</TableBodyCell>
 				{/each}

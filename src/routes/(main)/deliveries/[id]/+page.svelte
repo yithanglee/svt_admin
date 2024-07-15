@@ -15,18 +15,24 @@
 </script>
 
 <SimpleTable
-	title="Deliveries - #SO" + data.id
-	description={'Recipient: ' + shippingDeets.fullname + '(' +  shippingDeets.phone +')<br>' +
+	title="Deliveries - #SO"
+	+
+	data.id
+	description={'Recipient: ' +
+		shippingDeets.fullname +
+		'(' +
+		shippingDeets.phone +
+		')<br>' +
 		'<br>Address: ' +
-		shippingDeets.line1 +
+		(shippingDeets.line1 || '') +
 		' ' +
-		shippingDeets.line2 +
+		(shippingDeets.line2 || '') +
 		'<br>' +
-		shippingDeets.city +
-        ' ' +
-		shippingDeets.postcode +
+		(shippingDeets.city || '') +
 		' ' +
-		shippingDeets.state}
+		(shippingDeets.postcode || '') +
+		' ' +
+		(shippingDeets.state || '')}
 	data={{
 		apiData: { id: data.id },
 		buttons: [],
