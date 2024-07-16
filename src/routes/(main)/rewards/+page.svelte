@@ -22,7 +22,7 @@
 		customCols: [
 			{
 				title: 'General',
-				list: ['id']
+				list: ['id', {label: 'is_paid', boolean: true}]
 			}
 		],
 		columns: [
