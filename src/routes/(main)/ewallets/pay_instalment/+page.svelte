@@ -8,34 +8,48 @@
 
 	let inputs = data.inputs;
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
+
+	function pushList(data, wallet_type, list){
+		data.parent_ewallets.filter((f,i) => {return f.wallet_type == wallet_type}).forEach((v, i) => {
+				var checked = v.total > data.product.retail_price;
+			
+
+					list.push(
+						`<tr class="text-gray-500">
+							<td  class="border-t text-right">` +
+													v.wallet_type +
+													`</td>
+
+							<td  class="border-t text-right">` +
+													v.total.toFixed(2) +
+													`</td>
+
+							<td  class="border-t ">
+								<span class="flex justify-end pr-4">
+								<input name="choosen_wallet_type" `+ (checked ? 'checked' : '')  +` data-wallet-type='` +
+													v.wallet_type +
+													`' type="radio"  >
+								</span>
+								</td>
+							
+							</tr>`
+					);
+				
+			});
+	}
+
+
 	function payMember(data, checkPage, confirmModal) {
 		console.log(data);
 		console.log('transfer approved!');
 
 		var totalCost = 0,
-			list = [];
-		data.parent_ewallets.forEach((v, i) => {
-			if (['direct_recruitment', 'register'].includes(v.wallet_type)) {
-				list.push(
-					`<tr class="text-gray-500">
-				<td  class="border-t text-right">` +
-						v.wallet_type +
-						`</td>
-			
-				<td  class="border-t text-right">` +
-						v.total.toFixed(2) +
-						`</td>
-
-                <td  class="border-t ">
-                    <span class="flex justify-end pr-4">
-                    <input name="choosen_wallet_type" data-wallet-type='`+v.wallet_type+`' type="radio"  >
-                    </span>
-                    </td>
-				
-				</tr>`
-				);
-			}
-		});
+			list = [],
+			wallet_list = ['register', 'direct_recruitment'];
+		
+			pushList(data, wallet_list[0], list)
+			pushList(data, wallet_list[1], list)
+		
 
 		confirmModal(
 			true,
@@ -70,17 +84,16 @@
 				
 				`,
 			() => {
-				var dom = document.querySelector("input[name='password']"), radio_doms = document.querySelectorAll("input[name='choosen_wallet_type']");
+				var dom = document.querySelector("input[name='password']"),
+					radio_doms = document.querySelectorAll("input[name='choosen_wallet_type']");
 
-                var selectedType = 'register';
+				var selectedType = 'register';
 
-                radio_doms.forEach((dm, i) => {
-                    if (dm.checked ){
-                        selectedType =   dm.dataset.walletType 
-                    }
-                })
-
-
+				radio_doms.forEach((dm, i) => {
+					if (dm.checked) {
+						selectedType = dm.dataset.walletType;
+					}
+				});
 
 				if (dom.value == '1234') {
 					postData(
