@@ -12,8 +12,7 @@
 	function pushList(data, wallet_type, list){
 		data.parent_ewallets.filter((f,i) => {return f.wallet_type == wallet_type}).forEach((v, i) => {
 				var checked = v.total > data.product.retail_price;
-			
-
+				if (data.product.can_pay_by_drp && v.wallet_type == 'direct_recruitment') {
 					list.push(
 						`<tr class="text-gray-500">
 							<td  class="border-t text-right">` +
@@ -34,6 +33,31 @@
 							
 							</tr>`
 					);
+				}
+				if ( v.wallet_type != 'direct_recruitment') {
+					list.push(
+						`<tr class="text-gray-500">
+							<td  class="border-t text-right">` +
+													v.wallet_type +
+													`</td>
+
+							<td  class="border-t text-right">` +
+													v.total.toFixed(2) +
+													`</td>
+
+							<td  class="border-t ">
+								<span class="flex justify-end pr-4">
+								<input name="choosen_wallet_type" `+ (checked ? 'checked' : '')  +` data-wallet-type='` +
+													v.wallet_type +
+													`' type="radio"  >
+								</span>
+								</td>
+							
+							</tr>`
+					);
+				}
+
+					
 				
 			});
 	}
@@ -49,7 +73,7 @@
 		
 			pushList(data, wallet_list[0], list)
 			pushList(data, wallet_list[1], list)
-		
+			
 
 		confirmModal(
 			true,

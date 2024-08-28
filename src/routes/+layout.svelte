@@ -72,7 +72,7 @@
 	}
 </script>
 
-<div class="fixed w-full">
+<div class="fixed w-full" style="z-index: 100;">
 	<Toast color="green" position="top-right" bind:open>
 		<Icon
 			slot="icon"

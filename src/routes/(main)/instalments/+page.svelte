@@ -29,7 +29,7 @@
 		customCols: [
 			{
 				title: 'Gemeral',
-				list: ['id', 'name', 'no_of_months']
+				list: ['id', 'name', 'no_of_months', 'delay']
 			}
 		],
 		columns: [

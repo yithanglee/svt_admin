@@ -64,6 +64,7 @@
 					{ label: 'override_special_share_payout', boolean: true },
 					'override_special_share_payout_perc',
 					'id',
+					{ label: 'can_pay_by_drp', alt_name: 'Can pay by DRP', boolean: true },
 					{ label: 'is_instalment', alt_name: 'Set as instalment', boolean: true },
 					{
 						label: 'instalment_id',
