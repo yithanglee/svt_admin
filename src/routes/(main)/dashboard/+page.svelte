@@ -1,6 +1,7 @@
 <script>
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 	import Cookies from 'js-cookie';
+	import SimpleTable from '$lib/components/SimpleTable.svelte';
 	import { session } from '$lib/stores/session';
 	import { isToastOpen } from '$lib/stores/toast';
 	import { onMount } from 'svelte';
@@ -128,4 +129,88 @@
 			postFn={refreshPage}
 		/>
 	</div>
+</div>
+
+<div class="mt-4">
+	<SimpleTable
+		title="Monthly Outlet Transactions"
+		description={''}
+		data={{
+			apiData: { id: data.id },
+			buttons: [],
+			scope: 'current_month_outlet_trx',
+			columns: [
+				{ label: 'Year', data: 'year' },
+				{ label: 'Location', data: 'location' },
+				{ label: 'Jan', data: 'jan' },
+				{ label: 'Feb', data: 'feb' },
+				{ label: 'Mar', data: 'mar' },
+				{ label: 'Apr', data: 'apr' },
+				{ label: 'May', data: 'may' },
+				{ label: 'Jun', data: 'jun' },
+				{ label: 'Jul', data: 'jul' },
+				{ label: 'Aug', data: 'aug' },
+				{ label: 'Sep', data: 'sep' },
+				{ label: 'Oct', data: 'oct' },
+				{ label: 'Nov', data: 'nov' },
+				{ label: 'Dec', data: 'dec' }
+			]
+		}}
+	/>
+</div>
+
+<div class="mt-4">
+	<SimpleTable
+		title="Monthly Outlet Transactions (RP)"
+		description={''}
+		data={{
+			apiData: { id: data.id },
+			buttons: [],
+			scope: 'current_month_outlet_trx_only_rp',
+			columns: [
+				{ label: 'Year', data: 'year' },
+				{ label: 'Location', data: 'location' },
+				{ label: 'Jan', data: 'jan' },
+				{ label: 'Feb', data: 'feb' },
+				{ label: 'Mar', data: 'mar' },
+				{ label: 'Apr', data: 'apr' },
+				{ label: 'May', data: 'may' },
+				{ label: 'Jun', data: 'jun' },
+				{ label: 'Jul', data: 'jul' },
+				{ label: 'Aug', data: 'aug' },
+				{ label: 'Sep', data: 'sep' },
+				{ label: 'Oct', data: 'oct' },
+				{ label: 'Nov', data: 'nov' },
+				{ label: 'Dec', data: 'dec' }
+			]
+		}}
+	/>
+</div>
+
+<div class="mt-4">
+	<SimpleTable
+		title="Monthly Outlet Transactions (DRP)"
+		description={''}
+		data={{
+			apiData: { id: data.id },
+			buttons: [],
+			scope: 'current_month_outlet_trx_drp',
+			columns: [
+				{ label: 'Year', data: 'year' },
+				{ label: 'Location', data: 'location' },
+				{ label: 'Jan', data: 'jan' },
+				{ label: 'Feb', data: 'feb' },
+				{ label: 'Mar', data: 'mar' },
+				{ label: 'Apr', data: 'apr' },
+				{ label: 'May', data: 'may' },
+				{ label: 'Jun', data: 'jun' },
+				{ label: 'Jul', data: 'jul' },
+				{ label: 'Aug', data: 'aug' },
+				{ label: 'Sep', data: 'sep' },
+				{ label: 'Oct', data: 'oct' },
+				{ label: 'Nov', data: 'nov' },
+				{ label: 'Dec', data: 'dec' }
+			]
+		}}
+	/>
 </div>
