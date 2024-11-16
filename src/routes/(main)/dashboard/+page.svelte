@@ -133,7 +133,7 @@
 
 <div class="mt-4">
 	<SimpleTable
-		title="Monthly Outlet Transactions"
+		title="Monthly Sales Transactions"
 		description={''}
 		data={{
 			apiData: { id: data.id },
@@ -142,6 +142,7 @@
 			columns: [
 				{ label: 'Year', data: 'year' },
 				{ label: 'Location', data: 'location' },
+			
 				{ label: 'Jan', data: 'jan' },
 				{ label: 'Feb', data: 'feb' },
 				{ label: 'Mar', data: 'mar' },
@@ -161,7 +162,7 @@
 
 <div class="mt-4">
 	<SimpleTable
-		title="Monthly Outlet Transactions (RP)"
+		title="Monthly Sales Transactions (RP)"
 		description={''}
 		data={{
 			apiData: { id: data.id },
@@ -189,7 +190,7 @@
 
 <div class="mt-4">
 	<SimpleTable
-		title="Monthly Outlet Transactions (DRP)"
+		title="Monthly Sales Transactions (DRP)"
 		description={''}
 		data={{
 			apiData: { id: data.id },
