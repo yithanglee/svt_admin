@@ -91,6 +91,7 @@
 				title: 'General',
 				list: [
 					'id',
+					'commission_perc',
 					'name',
 					'remarks',
 					{ label: 'is_approved', boolean: true },
