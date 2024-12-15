@@ -98,7 +98,8 @@
 								newData: 'name',
 								title_key: 'name'
 							},
-							{ label: 'is_stockist', boolean: true }
+							{ label: 'is_stockist', boolean: true },
+							{ label: 'stockist_type', selection: ['mobile', 'area'] },
 						]
 					},
 					{

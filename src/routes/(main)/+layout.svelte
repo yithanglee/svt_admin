@@ -30,7 +30,7 @@
 	import { goto } from '$app/navigation';
 
 	let styles = ['sidebar', 'drawer'],
-		display_title = 'Commodities',
+		display_title = 'Commission',
 		display_href = '/dashboard',
 		style = styles[1],
 		app_routes = [],

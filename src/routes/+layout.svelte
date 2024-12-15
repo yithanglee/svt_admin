@@ -85,7 +85,7 @@
 
 <Navbar let:hidden let:toggle>
 	<NavBrand href="/">
-		<img src="/images/2damienslab.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+		<img src="/images/ssac_logo.png" class="mr-3 h-6 sm:h-9" alt="SSAC Logo" />
 		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
 			{username}
 		</span>
