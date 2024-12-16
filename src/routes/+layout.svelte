@@ -85,7 +85,7 @@
 
 <Navbar let:hidden let:toggle>
 	<NavBrand href="/">
-		<img src="/images/ssac_logo.png" class="mr-3 h-6 sm:h-9" alt="SSAC Logo" />
+		<img src="/images/haho_logo.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
 		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
 			{username}
 		</span>
