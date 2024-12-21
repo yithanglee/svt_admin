@@ -77,7 +77,7 @@
 <div class="flex sm:grid grid-cols-12 flex-col-reverse">
 	<div class="col-span-12 sm:col-span-9 mx-4 p-4">
 		<Datatable
-			data={{
+			data={{canDelete: true,
 				inputs: inputs,
 				search_queries: ['a.username|a.phone'],
 				model: 'User',

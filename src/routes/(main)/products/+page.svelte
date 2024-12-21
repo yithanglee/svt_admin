@@ -61,27 +61,27 @@
 				list: [
 					{ label: 'override_pv', alt_name: 'Override Payment DRP', boolean: true },
 					'override_perc',
-					{ label: 'override_special_share_payout', boolean: true },
-					'override_special_share_payout_perc',
+					// { label: 'override_special_share_payout', boolean: true },
+					// 'override_special_share_payout_perc',
 					'id',
-					{ label: 'can_pay_by_drp', alt_name: 'Can pay by DRP', boolean: true },
-					{ label: 'is_instalment', alt_name: 'Set as instalment', boolean: true },
-					{
-						label: 'instalment_id',
-						selection: 'Instalment',
-						customCols: null,
-						search_queries: ['a.name'],
-						newData: 'name',
-						title_key: 'name'
-					},
-					{
-						label: 'first_payment_product_id',
-						selection: 'Product',
-						customCols: null,
-						search_queries: ['a.name'],
-						newData: 'name',
-						title_key: 'name'
-					}
+					// { label: 'can_pay_by_drp', alt_name: 'Can pay by DRP', boolean: true },
+					// { label: 'is_instalment', alt_name: 'Set as instalment', boolean: true },
+					// {
+					// 	label: 'instalment_id',
+					// 	selection: 'Instalment',
+					// 	customCols: null,
+					// 	search_queries: ['a.name'],
+					// 	newData: 'name',
+					// 	title_key: 'name'
+					// },
+					// {
+					// 	label: 'first_payment_product_id',
+					// 	selection: 'Product',
+					// 	customCols: null,
+					// 	search_queries: ['a.name'],
+					// 	newData: 'name',
+					// 	title_key: 'name'
+					// }
 				]
 			}
 		],
@@ -93,7 +93,7 @@
 		columns: [
 			{ label: 'ID', data: 'id' },
 			{ label: 'Name', data: 'name' },
-			{ label: 'Retail Price (RP)', data: 'retail_price' },
+			{ label: 'Retail Price (Cash Point)', data: 'retail_price' },
 			{ label: 'Point Value', data: 'point_value' },
 			{
 				label: 'Override?',
@@ -112,23 +112,23 @@
 				]
 			},
 			{ label: 'Register Perc', data: 'override_perc' },
-			{
-				label: 'Override Special Share?',
-				data: 'override_special_share_payout',
-				isBadge: true,
-				color: [
-					{
-						key: false,
-						value: 'yellow'
-					},
+			// {
+			// 	label: 'Override Special Share?',
+			// 	data: 'override_special_share_payout',
+			// 	isBadge: true,
+			// 	color: [
+			// 		{
+			// 			key: false,
+			// 			value: 'yellow'
+			// 		},
 
-					{
-						key: true,
-						value: 'green'
-					}
-				]
-			},
-			{ label: 'Special Share DRP Perc', data: 'override_special_share_payout_perc' }
+			// 		{
+			// 			key: true,
+			// 			value: 'green'
+			// 		}
+			// 	]
+			// },
+			// { label: 'Special Share DRP Perc', data: 'override_special_share_payout_perc' }
 
 			// { label: 'Country', data: 'name', through: ['country'] }
 		]
