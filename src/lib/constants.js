@@ -9,7 +9,6 @@ export const MENUS = [
             { path: '/admin/role', title: 'Role', icon: 'camera-foto-solid' },
 
             { path: '/admin/app_route', title: 'Route', icon: 'camera-foto-solid' },
-            { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
       
         ]
     },
@@ -42,7 +41,7 @@ export const MENUS = [
         ]
     },
     { path: '/deliveries', title: 'Deliveries', icon: 'book-solid' },
-    { path: '/merchants', title: 'Merchants', icon: 'book-solid' },
+ 
     { path: '/sales', title: 'Sales', icon: 'book-solid' },
     {
         path: '#', title: 'Stocks', icon: null, children: [
@@ -57,6 +56,15 @@ export const MENUS = [
 
             { path: '/users', title: 'Users', icon: 'book-solid' },
             { path: '/users/placements', title: 'Placements', icon: 'book-solid' }
+        ]
+    },
+    {
+        path: '#', title: 'Merchants', icon: null, children: [
+
+           
+            { path: '/merchants', title: 'Merchants', icon: 'book-solid' },
+            { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
+            { path: '/merchants/sales', title: 'Merchant Sales', icon: 'camera-foto-solid' },
         ]
     },
     {
