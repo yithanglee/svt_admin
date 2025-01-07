@@ -70,7 +70,7 @@
 		// join_statements: JSON.stringify([{ user: 'user' }]),
 		search_queries: ['a.id'],
 		model: 'Merchant',
-		preloads: ['user', 'merchant_category'],
+		preloads: ['user', 'merchant_category', 'country'],
 		buttons: [
 			// { name: 'Products', onclickFn: viewDO },
 
@@ -95,7 +95,16 @@
 					'name',
 					'remarks',
 					{ label: 'is_approved', boolean: true },
+					
 
+{
+	label: 'country_id',
+	selection: 'Country',
+	customCols: null,
+	search_queries: ['a.name'],
+	newData: 'name',
+	title_key: 'name'
+},
 					{
 						label: 'merchant_category_id',
 						selection: 'MerchantCategory',
@@ -125,6 +134,7 @@
 			{ label: 'Name', data: 'name' },
 			{ label: 'User', data: 'username', through: ['user'] },
 			{ label: 'Category', data: 'name', through: ['merchant_category'] },
+			{ label: 'Country', data: 'name', through: ['country'] },
 			{
 				label: 'Approved?',
 				data: 'is_approved',
