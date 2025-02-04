@@ -20,18 +20,24 @@
 	import { onMount } from 'svelte';
 	import { isModalOpen } from '$lib/stores/modal';
 	export let data, title, description;
+	export const reload = () => fetchData(1);
 
 	let modalFn,
-		apiData = data.apiData,
-		scope = data.scope,
-		columns = data.columns,
-		modalMessage,
-		confirmModal = false,
-		selectedId = 0,
-		isOpen = false,
+	apiData = data.apiData,
+        scope = data.scope,
+        columns = data.columns,
+        modalMessage,
+        confirmModal = false,
+        selectedId = 0,
+        isOpen = false,
 		items = [],
 		pages = [],
 		selectedData = {};
+
+	// Make these reactive to data changes
+	$: apiData = data.apiData;
+	$: scope = data.scope;
+	$: columns = data.columns;
 
 	const itemsPerPage = 100;
 

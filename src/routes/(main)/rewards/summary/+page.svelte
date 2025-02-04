@@ -1,3 +1,4 @@
+
 <script>
 	/** @type {import('./$types').PageData} */
 	import SimpleTable from '$lib/components/SimpleTable.svelte';
@@ -37,7 +38,9 @@
 </script>
 
 <SimpleTable
-	data={{apiData: {},
+	data={{apiData: {
+	
+	},
 		buttons: [
 			{
 				name: 'Pay',

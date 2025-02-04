@@ -99,7 +99,7 @@
 								title_key: 'name'
 							},
 							{ label: 'is_stockist', boolean: true },
-							{ label: 'stockist_type', selection: ['mobile', 'area'] },
+							// { label: 'stockist_type', selection: ['mobile', 'area'] },
 						]
 					},
 					{

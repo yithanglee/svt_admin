@@ -24,6 +24,8 @@ export const MENUS = [
     {
         path: '#', title: 'Commission', icon: null, children: [
             { path: '/rewards/summary', title: 'Commission Summary', icon: 'camera-foto-solid' },
+            { path: '/rewards/travel_fund_qualifiers', title: 'Travel Fund Qualifiers', icon: 'camera-foto-solid' },
+           
             { path: '/rewards/details', title: 'Commission Details', icon: 'camera-foto-solid' },
             { path: '/rewards', title: 'All Commission', icon: 'camera-foto-solid' },
             { path: '/rewards/royalty_users', title: 'Royalty Users', icon: 'camera-foto-solid' },
