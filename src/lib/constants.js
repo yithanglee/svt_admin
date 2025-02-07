@@ -59,13 +59,13 @@ export const MENUS = [
             { path: '/users/placements', title: 'Placements', icon: 'book-solid' }
         ]
     },
-    {
-        path: '#', title: 'Instalments', icon: null, children: [
+    // {
+    //     path: '#', title: 'Instalments', icon: null, children: [
 
-            { path: '/instalments', title: 'Instalments', icon: 'book-solid' },
-            { path: '/member_instalments', title: 'Member Instalments', icon: 'book-solid' }
-        ]
-    },
+    //         { path: '/instalments', title: 'Instalments', icon: 'book-solid' },
+    //         { path: '/member_instalments', title: 'Member Instalments', icon: 'book-solid' }
+    //     ]
+    // },
     { path: '/ranks', title: 'Rank', icon: 'book-solid' },
     {
         path: '#', title: 'Ewallets', icon: null, children: [
