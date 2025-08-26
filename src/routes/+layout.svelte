@@ -85,9 +85,10 @@
 
 <Navbar let:hidden let:toggle>
 	<NavBrand href="/">
-		<img src="/images/ssac_logo.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
-		<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-			{username}
+		<div class="mx-2 "><span class="font-semibold  text-blue-600">N</span>etsphere</div>
+		<span class="self-center whitespace-nowrap   dark:text-white">
+			<div></div>
+			<div class="font-semibold">{username}</div>
 		</span>
 	</NavBrand>
 	<div class="flex md:order-2">
