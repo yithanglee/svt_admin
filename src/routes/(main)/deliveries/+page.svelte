@@ -206,6 +206,7 @@
 			{ label: 'Country', data: 'name', through: ['country'] },
 			{ label: 'Timestamp', data: 'inserted_at', formatDateTime: true, offset: 8 },
 			// { label: 'Sale Date', data: 'sale_date' },
+			{ label: 'Fee', data: 'shipping_fee' },
 			{ label: 'Ref', data: 'shipping_ref' },
 			{
 				label: 'Status',

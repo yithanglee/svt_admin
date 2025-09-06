@@ -50,7 +50,7 @@
 				title: 'Price',
 				list: [
 					'retail_price',
-
+					'base_shipping_fee',
 					'point_value',
 					{ label: 'desc', editor2: true },
 					{ label: 'img_url', upload: true }
@@ -94,6 +94,7 @@
 			{ label: 'ID', data: 'id' },
 			{ label: 'Name', data: 'name' },
 			{ label: 'Retail Price (Cash Point)', data: 'retail_price' },
+			{ label: 'Base Shipping Fee', data: 'base_shipping_fee' },
 			{ label: 'Point Value', data: 'point_value' },
 			{
 				label: 'Override?',
