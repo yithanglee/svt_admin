@@ -6,6 +6,7 @@ export const MENUS = [
     {
         path: '#', title: 'Admin', icon: null, children: [
             { path: '/admin/staff', title: 'Staff', icon: 'camera-foto-solid' },
+            { path: '/admin/assets', title: 'Assets', icon: 'camera-foto-solid' },
             { path: '/admin/role', title: 'Role', icon: 'camera-foto-solid' },
 
             { path: '/admin/app_route', title: 'Route', icon: 'camera-foto-solid' },
