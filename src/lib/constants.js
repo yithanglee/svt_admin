@@ -15,6 +15,12 @@ export const MENUS = [
         ]
     },
     {
+        path: '#', title: 'Eshare', icon: null, children: [
+            { path: '/eshare/ledger_entries', title: 'Ledger Entries', icon: 'camera-foto-solid' },
+            { path: '/eshare/holdings', title: 'Holdings', icon: 'camera-foto-solid' },
+        ]
+    },
+    {
         path: '#', title: 'Geo', icon: null, children: [
             { path: '/geo/countries', title: 'Country', icon: 'camera-foto-solid' },
             { path: '/geo/states', title: 'States', icon: 'camera-foto-solid' },
