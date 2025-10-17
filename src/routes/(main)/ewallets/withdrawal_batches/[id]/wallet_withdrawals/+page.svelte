@@ -71,12 +71,9 @@
 			},
 
 			{ label: 'From', data: 'username', through: ['user'] },
-			{ label: 'Request (USD)', data: 'amount', className: 'text-right' },
-			{ label: 'Processing Fee (USD)', data: 'processing_fee', className: 'text-right' },
-			{ label: 'Request (MYR)', data: 'amount_in_myr', className: 'text-right' },
-
-			{ label: 'Processing Fee (MYR)', data: 'processing_fee_in_myr', className: 'text-right' },
-			{ label: 'Pay Member (MYR)', data: 'final_amount_in_myr', className: 'text-right' },
+			{ label: 'Request ', data: 'amount', className: 'text-right' },
+			{ label: 'Processing Fee ', data: 'processing_fee', className: 'text-right' },
+	
 			{ label: 'Remarks', data: 'remarks' }
 		]
 	}}
