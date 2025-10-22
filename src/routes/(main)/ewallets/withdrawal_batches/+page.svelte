@@ -23,6 +23,22 @@
 		}
 		return bool;
 	}
+	function approveTokenTransfer(data, checkPage, confirmModal) {
+		console.log(data);
+		console.log('transfer approved!');
+
+		confirmModal(true, 'Are you sure to approve these withdrawals?', () => {
+			postData(
+				{ scope: 'approve_token_withdrawal_batch', id: data.id },
+				{
+					endpoint: url + '/svt_api/webhook',
+					successCallback: () => {
+						checkPage();
+					}
+				}
+			);
+		});
+	}
 	function approveTransfer(data, checkPage, confirmModal) {
 		console.log(data);
 		console.log('transfer approved!');
@@ -63,6 +79,8 @@
 			}
 		],
 		buttons: [
+			
+			{ name: 'Approve (Token)', onclickFn: approveTokenTransfer , showCondition: showCondition},
 			{ name: 'Approve', onclickFn: approveTransfer , showCondition: showCondition},
 			{ name: 'View', onclickFn: viewTransfer }
 		],

@@ -1,12 +1,52 @@
 <script>
 	import Datatable from '$lib/components/Datatable.svelte';
 	import { onMount } from 'svelte';
+	import { postData, buildQueryString } from '$lib/index.js';
+	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
+	import { isToastOpen } from '$lib/stores/toast';
+	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
 	/** @type {import('./$types').PageData} */
 	export let data;
 	onMount(async () => {});
 
 	let module = data.module, bonus = data.bonus, date_data = data.date.split("-"),
 		inputs = data.inputs;
+
+	function unwithholdReward(data, checkPage, confirmModal) {
+		console.log(data);
+		console.log('withholding reward!');
+
+		confirmModal(true, 'Are you sure to withhold these reward?', () => {
+			postData(
+				{ scope: 'unwithhold_reward', id: data.id },
+				{
+					endpoint: url + '/svt_api/webhook',
+					successCallback: () => {
+						isToastOpen.notify('Reward Withheld!');
+						checkPage();
+					}
+				}
+			);
+		});
+	}
+
+	function withholdReward(data, checkPage, confirmModal) {
+		console.log(data);
+		console.log('withholding reward!');
+
+		confirmModal(true, 'Are you sure to withhold these reward?', () => {
+			postData(
+				{ scope: 'withhold_reward', id: data.id },
+				{
+					endpoint: url + '/svt_api/webhook',
+					successCallback: () => {
+						isToastOpen.notify('Reward Withheld!');
+						checkPage();
+					}
+				}
+			);
+		});
+	}
 
 </script>
 
@@ -21,6 +61,18 @@
 		search_queries: [ 'b.username'],
 		model: module,
 		preloads: ['user'],
+		buttons: [
+			{
+				name: 'Withhold',
+				onclickFn: withholdReward,
+				showCondition: (data) => !data.is_withheld
+			},
+			{
+				name: 'Unwithhold',
+				onclickFn: unwithholdReward,
+				showCondition: (data) => data.is_withheld
+			}
+		],
 		customCols: [
 			{
 				title: 'General',
@@ -47,6 +99,16 @@
 					}
 				]
 			},
+			{ label: 'Withheld?', data: 'is_withheld', isBadge: true, color: [
+				{
+					key: false,
+					value: 'green'
+				},
+				{
+					key: true,
+					value: 'red'
+				}
+			]},
 			{ label: 'day', data: 'day' },
 			{ label: 'month', data: 'month' },
 			{ label: 'year', data: 'year' },
