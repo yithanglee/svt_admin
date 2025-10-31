@@ -31,6 +31,7 @@
 					'id',
 					'user_id',
 					'amount',
+					{ label: 'withdrawal_type', selection: ['bonus', 'active_token'] },
 					'bank_name',
 					'bank_account_number',
 					'remarks',
@@ -53,6 +54,23 @@
 		
 			{ label: 'Bank', data: 'bank_name' },
 			{ label: 'Acc No', data: 'bank_account_number' },
+			{
+				label: 'Paid?',
+				data: 'withdrawal_type',
+				isBadge: true,
+				color: [
+					{
+						key: 'bonus',
+						value: 'blue'
+					},
+
+					{
+						key: 'active_token',
+						value: 'green'
+					}
+				]
+			},
+
 			{
 				label: 'Paid?',
 				data: 'is_paid',
