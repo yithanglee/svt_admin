@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import { redirect } from "@sveltejs/kit";
 import { onDestroy } from 'svelte';
 import { isToastOpen } from '$lib/stores/toast';
-import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
+import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT, PHX_COOKIE } from '$lib/constants';
 
 export async function load({ locals }) {
 
@@ -16,12 +16,12 @@ export async function load({ locals }) {
     function relogin() {
         session.logout();
         Cookies.remove('user');
-        Cookies.remove('_commerce_front_key2');
+        Cookies.remove(PHX_COOKIE);
         needLogin = true;
     }
 
 
-    let cookieToken = await Cookies.get('_commerce_front_key2');
+    let cookieToken = await Cookies.get(PHX_COOKIE);
     console.log("from main layout js")
     console.log(cookieToken);
     console.log(session.user())

@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { postData } from '$lib/index.js';
-	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
+	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT , PHX_COOKIE } from '$lib/constants';
 	import { Card, Button, Label, Input, Checkbox } from 'flowbite-svelte';
 	import { session } from '$lib/stores/session';
 	import { requestNotificationPermission } from '$lib/firebaseConfig.js';
@@ -22,7 +22,7 @@
 		if (res.status == 'ok') {
 			// Set user session/token/cookie
 			// await Cookies.set('_commerce_front_key', res.res );
-		await Cookies.set('_commerce_front_key2', res.res , { sameSite: 'Lax' });
+		await Cookies.set(PHX_COOKIE, res.res , { sameSite: 'Lax' });
 
 			// Redirect to dashboard
 			console.log('login user');
@@ -38,7 +38,7 @@
 			} catch (e) {
 				console.error('FCM permission/token error:', e);
 			}
-			let cookieToken = await Cookies.get('_commerce_front_key2');
+			let cookieToken = await Cookies.get(PHX_COOKIE);
 			console.log("check cookite js")
 			console.log(cookieToken);
 			goto('/dashboard');
@@ -46,8 +46,8 @@
 			session.logout();
 			// loggedIn = 'false';
 			Cookies.remove('user');
-			Cookies.remove('_commerce_front_key2');
-			await Cookies.remove('_commerce_front_key2')
+			Cookies.remove(PHX_COOKIE);
+			await Cookies.remove(PHX_COOKIE)
 			goto('/');
 		}
 	}

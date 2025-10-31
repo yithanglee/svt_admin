@@ -1,7 +1,7 @@
 <script>
 	/** @type {import('./$types').LayoutData} */
 	export let data;
-	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
+	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT, PHX_COOKIE } from '$lib/constants';
 
 	import { postData } from '$lib/index.js';
 
@@ -47,7 +47,7 @@
 	function logout() {
 		session.logout();
 		Cookies.remove('user');
-		Cookies.remove('_commerce_front_key2');
+		Cookies.remove(PHX_COOKIE);
 
 		setTimeout(() => {
 			goto('/');

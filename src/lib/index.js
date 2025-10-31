@@ -1,10 +1,10 @@
 import { goto } from '$app/navigation';
-import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
+import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT, PHX_COOKIE } from '$lib/constants';
 import { isToastOpen } from '$lib/stores/toast';
 import Cookies from 'js-cookie';
 export async function postData(data, options) {
     let res
-    let cookieToken = Cookies.get('_commerce_front_key2');
+    let cookieToken = Cookies.get(PHX_COOKIE);
     let token = cookieToken != null ? cookieToken : 'empty';
     var default_options = {
         method: 'POST',
@@ -30,7 +30,7 @@ export async function postData(data, options) {
         console.log()
         if (response.status == 403) {
         
-            Cookies.remove('_commerce_front_key2');
+            Cookies.remove(PHX_COOKIE);
       
             goto("/")
         }
