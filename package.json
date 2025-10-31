@@ -36,6 +36,7 @@
 		"cl-editor": "^2.3.0",
 		"datatables.net-dt": "^1.13.6",
 		"dotenv": "^16.3.1",
+		"firebase": "^11.10.0",
 		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.43.2",
 		"flowbite-svelte-icons": "^0.3.6",

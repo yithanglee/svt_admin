@@ -4,6 +4,7 @@
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 	import { Card, Button, Label, Input, Checkbox } from 'flowbite-svelte';
 	import { session } from '$lib/stores/session';
+	import { requestNotificationPermission } from '$lib/firebaseConfig.js';
 	import Cookies from 'js-cookie';
 	let username = '', cookieName = '_commerce_front_key',
 		email = '',
@@ -31,6 +32,12 @@
 				role_app_routes: res.role_app_routes,
 				id: res.user_id 
 			});
+			// Request notification permission and register FCM token after successful login
+			try {
+				await requestNotificationPermission();
+			} catch (e) {
+				console.error('FCM permission/token error:', e);
+			}
 			let cookieToken = await Cookies.get('_commerce_front_key2');
 			console.log("check cookite js")
 			console.log(cookieToken);
