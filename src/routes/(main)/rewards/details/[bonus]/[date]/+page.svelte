@@ -48,6 +48,23 @@
 		});
 	}
 
+	function paySingleReward(data, checkPage, confirmModal) {
+		console.log(data);
+		console.log('paying single reward!');
+
+		confirmModal(true, 'Are you sure to pay this reward?', () => {
+			postData(
+				{ scope: 'pay_single_reward', reward_id: data.id },
+				{
+					endpoint: url + '/svt_api/webhook',
+					successCallback: () => {
+						isToastOpen.notify('Reward Paid!');
+						checkPage();
+					}
+				}
+			);
+		});
+	}
 </script>
 
 <Datatable
@@ -62,6 +79,11 @@
 		model: module,
 		preloads: ['user'],
 		buttons: [
+			{
+				name: 'Pay',
+				onclickFn: paySingleReward,
+				showCondition: (data) => !data.is_paid
+			},
 			{
 				name: 'Withhold',
 				onclickFn: withholdReward,
