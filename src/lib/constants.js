@@ -80,6 +80,7 @@ export const MENUS = [
             { path: '/ewallets/merchant_withdrawals', title: 'Merchant Withdrawal', icon: 'camera-foto-solid' },
             { path: '/ewallets', title: 'Ewallets', icon: 'book-solid' },
             { path: '/ewallets/transfers', title: 'Transfers', icon: 'camera-foto-solid' },
+            { path: '/ewallets/swap_backs', title: 'Swap Back', icon: 'camera-foto-solid' },
             { path: '/ewallets/register_points', title: 'Register Points', icon: 'camera-foto-solid' },
             { path: '/ewallets/pay_instalment', title: 'Pay Instalment', icon: 'book-solid' }
       
