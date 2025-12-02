@@ -9,7 +9,7 @@
 	let inputs = data.inputs;
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
 
-	function viewDO(data, checkPage, confirmModal) {
+	function viewProducts(data, checkPage, confirmModal) {
 		goto('/merchants/' + data.id + '/products');
 	}
 	function showCondition(data) {
@@ -72,7 +72,7 @@
 		model: 'Merchant',
 		preloads: ['user', 'merchant_category'],
 		buttons: [
-			// { name: 'Products', onclickFn: viewDO },
+			{ name: 'Products', onclickFn: viewProducts },
 
 			{
 				name: 'Approve Merchant',
