@@ -1,20 +1,8 @@
 <script>
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
-	import Cookies from 'js-cookie';
 	import SimpleTable from '$lib/components/SimpleTable.svelte';
 	import { session } from '$lib/stores/session';
-	import { isToastOpen } from '$lib/stores/toast';
 	import { onMount } from 'svelte';
-	import {
-		Table,
-		TableBody,
-		TableBodyCell,
-		TableBodyRow,
-		TableHead,
-		TableHeadCell
-	} from 'flowbite-svelte';
-	import { Card, Button, Label, Input, Checkbox } from 'flowbite-svelte';
-	import { buildQueryString, postData } from '$lib/index.js';
 	/** @type {import('./$types').PageData} */
 	import Chart from 'chart.js/auto';
 	export let data;
@@ -23,9 +11,6 @@
 
 	let chartData = data.chartData;
 
-	let items = [{ key: 'id', value: 'int' }],
-		module = '',
-		title = '';
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
 
 	var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -36,7 +21,7 @@
 		// console.log(labels);
 		// console.log(values);
 
-		months.forEach((v, i) => {
+		months.forEach((v) => {
 			console.log(chartData[0][v]);
 			var vsales = 0;
 

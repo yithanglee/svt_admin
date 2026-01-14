@@ -9,6 +9,11 @@ export const MENUS = [
             { path: '/admin/role', title: 'Role', icon: 'camera-foto-solid' },
 
             { path: '/admin/app_route', title: 'Route', icon: 'camera-foto-solid' },
+
+            { path: '/ranks', title: 'Rank', icon: 'book-solid' },
+
+    { path: '/announcements', title: 'Announcements', icon: 'book-solid' },
+    { path: '/slides', title: 'Slides', icon: 'book-solid' },
       
         ]
     },
@@ -19,8 +24,9 @@ export const MENUS = [
             { path: '/geo/pick_up_points', title: 'Pick Up Points', icon: 'camera-foto-solid' },
         ]
     },
-    { path: '/announcements', title: 'Announcements', icon: 'book-solid' },
-    { path: '/slides', title: 'Slides', icon: 'book-solid' },
+
+    { path: '/cumulative_purchase_periods', title: 'Cumulative Purchase Periods', icon: 'book-solid' },
+    
     {
         path: '#', title: 'Commission', icon: null, children: [
             { path: '/rewards/summary', title: 'Commission Summary', icon: 'camera-foto-solid' },
@@ -30,7 +36,7 @@ export const MENUS = [
             { path: '/rewards/details', title: 'Commission Details', icon: 'camera-foto-solid' },
             { path: '/rewards', title: 'All Commission', icon: 'camera-foto-solid' },
             { path: '/rewards/royalty_users', title: 'Royalty Users', icon: 'camera-foto-solid' },
-
+            { path: '/cumulative_purchase_periods', title: 'Cumulative Purchase Periods', icon: 'camera-foto-solid' },
         ]
     },
     {
@@ -77,7 +83,6 @@ export const MENUS = [
             { path: '/member_instalments', title: 'Member Instalments', icon: 'book-solid' }
         ]
     },
-    { path: '/ranks', title: 'Rank', icon: 'book-solid' },
     {
         path: '#', title: 'Ewallets', icon: null, children: [
             { path: '/ewallets/withdrawal_batches', title: 'Withdrawal', icon: 'camera-foto-solid' },

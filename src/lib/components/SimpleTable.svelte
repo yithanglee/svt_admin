@@ -23,6 +23,7 @@
 	export const reload = () => fetchData(1);
 
 	let modalFn,
+	populateNow = data.populateNow != null ? data.populateNow : true,
 	apiData = data.apiData,
         scope = data.scope,
         columns = data.columns,
@@ -30,7 +31,7 @@
         confirmModal = false,
         selectedId = 0,
         isOpen = false,
-		items = [],
+		items = data.items != null ? data.items : [],
 		pages = [],
 		selectedData = {};
 
@@ -76,7 +77,12 @@
 		alert('Next btn clicked. Make a call to your server to fetch data.');
 	};
 	onMount(() => {
-		fetchData(1);
+		if(populateNow) {
+
+			fetchData(1);
+		} 
+		
+
 	});
 
 	async function checkPage() {

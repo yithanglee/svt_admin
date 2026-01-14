@@ -135,6 +135,20 @@
 				{/if}
 			</Label>
 		</div>
+	{:else if key.date == true}
+		<div class="w-full mx-4 my-2">
+			<Label class="space-y-2">
+				<span class="capitalize">{alt_name}</span>
+				<Input type="date" name={inputName(input.key)} bind:value={data[input.key]} />
+			</Label>
+		</div>
+	{:else if key.datetime == true}
+		<div class="w-full mx-4 my-2">
+			<Label class="space-y-2">
+				<span class="capitalize">{alt_name}</span>
+				<Input type="datetime-local" name={inputName(input.key)} bind:value={data[input.key]} />
+			</Label>
+		</div>
 	{:else if input.value == 'id'}
 		<Input type="hidden" name={inputName(input.key)} bind:value={data[input.key]} />
 	{:else if input.value == 'binary'}

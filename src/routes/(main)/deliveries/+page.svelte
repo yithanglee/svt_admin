@@ -21,6 +21,15 @@
 	function viewDO(data, checkPage, confirmModal) {
 		goto('/deliveries/' + data.id);
 	}
+	function viewDOChild(data, checkPage, confirmModal, openRowChild) {
+		openRowChild({title: 'Delivery Items', id: data.id, items: data.sales_items, columns: [
+			{ label: 'Img', data: 'img_url', showImg: true },
+			{ label: 'Name', data: 'item_name', subtitle: { label: 'Remarks', data: 'remarks' } },
+			
+			{ label: 'Qty', data: 'qty' }
+		]});
+		console.log('viewDOChild', data.sales_items);
+	}
 	function showCondition(data) {
 		var bool = false;
 		if (data.status == 'processing') {
@@ -178,9 +187,9 @@
 			'a.has_freebies=true'
 		],
 		model: 'Sale',
-		preloads: ['user', 'sales_person', 'payment', 'country'],
+		preloads: ['user', 'sales_person', 'payment', 'country', 'sales_items'],
 		buttons: [
-			{ name: 'Preview', onclickFn: viewDO },
+			{ name: 'Preview', onclickFn: viewDOChild },
 			{ name: 'Download DO (PDF)', onclickFn: downloadDO },
 			{
 				name: 'Mark Pending Delivery',
