@@ -10,7 +10,7 @@
 	data={{
 		showNew: true,
 		canDelete: true,
-		appendQueries: { role_id: data.role_id },
+		appendQueries: {  },
 		inputs: inputs,
 		search_queries: null,
 		model: 'CumulativePurchaseFreebie',
