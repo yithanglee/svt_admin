@@ -3,7 +3,7 @@
 	import DataCell from '$lib/components/DataCell.svelte';
 	import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 	import { postData, buildQueryString } from '$lib/index.js';
-
+	import SimpleTable from '$lib/components/SimpleTable.svelte';
 	import { isTableReloaded } from '$lib/stores/reloadTable';
 	import { onDestroy } from 'svelte';
 	import { page } from '$app/stores';
@@ -47,7 +47,7 @@
 		selectedData = {},
 		cac_url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT,
 		model = data.model;
-
+	let childData = {items: [], columns: []};
 	const itemsPerPage = 100;
 	let apiData = {
 		search: { regex: 'false', value: query != null ? query : '' },
@@ -173,6 +173,11 @@
 			fetchData($page.url.searchParams.get('page'));
 		}, 200);
 	}
+	function openRowChild(data) {
+		console.log('openRowChild', data);
+		childData = data;
+
+	}
 	function deleteData(data) {
 		// need a confirmation button...
 
@@ -293,7 +298,7 @@
 									{#if button.showCondition(item)}
 										|
 										<a
-											on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn)}
+											on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn, openRowChild)}
 											href="#"
 											class="font-medium text-primary-600 hover:underline dark:text-primary-500"
 											>{button.name}</a
@@ -302,7 +307,7 @@
 								{:else}
 									|
 									<a
-										on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn)}
+										on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn, openRowChild)}
 										href="#"
 										class="font-medium text-primary-600 hover:underline dark:text-primary-500"
 										>{button.name}</a
@@ -321,6 +326,30 @@
 					{/if}
 				</TableBodyCell>
 			</TableBodyRow>
+			{#if item.id == childData.id}
+			<TableBodyRow>
+				<TableBodyCell colspan={columns.length }>
+					<div class="mt-4 w-full">
+						<SimpleTable
+						title={childData.title}
+							description={''}
+							data={{
+								
+								populateNow: false,
+								apiData: {  },
+								items: childData.items,
+								buttons: [],
+								columns: childData.columns
+							}}
+						/>
+						<Button color="red" on:click={() => {
+							childData = {items: [], columns: []};
+						}}>Close</Button>
+					</div>
+				</TableBodyCell>
+			</TableBodyRow>
+			{/if}
+			
 		{/each}
 	</TableBody>
 </Table>

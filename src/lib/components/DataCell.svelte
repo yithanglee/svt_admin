@@ -7,6 +7,7 @@
 	let img_url,
 		previewModal = false,
 		url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
+	import { Progressbar } from 'flowbite-svelte';
 	function badgeColor(value, conditionList) {
 		var resultList = conditionList.filter((v, i) => {
 			return v.key == value;
@@ -17,6 +18,10 @@
 		} else {
 			return 'pink';
 		}
+	}
+
+	function formatFloat(data, key, offset) {
+		return parseFloat(data[key]).toFixed(2);
 	}
 
 	function checkAssoc(data, val, through) {
@@ -68,6 +73,8 @@
 	{/if}
 
 	<!-- {showPreview(item, col.data)} -->
+{:else if col.formatFloat}
+	{formatFloat(item, col.data, col.offset)}
 {:else if col.formatDateTime}
 	{formatDateTime(item, col.data, col.offset)}
 {:else if col.through != null}
@@ -80,6 +87,10 @@
 	<div style="width: 80px;">
 		<Img class="rounded-lg" src="{url}{item[col.data]}" />
 	</div>
+{:else if col.showProgress}
+<div class="flex items-center gap-2">
+<Progressbar progress={col.showProgress(item)} /> ({col.showProgress(item)}%	)
+</div>
 {:else if col.isBadge}
 	<Badge class="capitalize" color="pink"
 		>{item[col.data] == null

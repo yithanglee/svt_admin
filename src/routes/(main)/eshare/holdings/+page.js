@@ -5,8 +5,8 @@ import { PHX_HTTP_PROTOCOL, PHX_ENDPOINT } from '$lib/constants';
 export const load = async () => {
 let url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT ,module;
 
-let inputs = await genInputs(url, 'Holding')
-  return {module: 'Holding',
+let inputs = await genInputs(url, 'StakeHolding')
+  return {module: 'StakeHolding',
     inputs: inputs
   };
 };
