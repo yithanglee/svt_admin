@@ -15,7 +15,7 @@
 	let selectedMonth = 1;
 
 	// Create an array of years (e.g., from 2020 to 2025)
-	const years = Array.from({length: 6}, (_, i) => 2020 + i);
+	const years = Array.from({length: 7}, (_, i) => 2020 + i);
 	// Create an array of months (1-12)
 	const months = Array.from({length: 12}, (_, i) => i + 1);
 
