@@ -10,7 +10,7 @@
 	data={{
 		showNew: true,
 		canDelete: true,
-		appendQueries: {  },
+		appendQueries: {cumulative_purchase_period_id: data.id  },
 		inputs: inputs,
 		search_queries: null,
 		model: 'CumulativePurchaseFreebie',
@@ -18,6 +18,19 @@
 		customCols: [
 			{
 				title: 'General',
+				list: [
+					'id',
+					
+                    {label: 'qty', expose: true},
+                    {label: 'pp', expose: true},
+                    {label: 'drp', expose: true},
+                    {label: 'tp', expose: true},
+                    {label: 'reward_type', selection: ['product', 'pp', 'drp', 'tp']},
+                    {label: 'total_cumulative_rp', expose: true},
+				]
+			},
+			{
+				title: 'products',
 				list: [
 					'id',
 					{
@@ -28,13 +41,8 @@
 						module: 'Product',
 						parentId: data.id,
 						parent_module: 'CumulativePurchasePeriod'
-					},
-                    {label: 'qty', expose: true},
-                    {label: 'pp', expose: true},
-                    {label: 'drp', expose: true},
-                    {label: 'tp', expose: true},
-                    {label: 'reward_type', expose: true},
-                    {label: 'total_cumulative_rp', expose: true},
+					}
+             
 				]
 			}
 		],
