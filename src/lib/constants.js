@@ -10,8 +10,8 @@ export const MENUS = [
             { path: '/admin/role', title: 'Role', icon: 'camera-foto-solid' },
 
             { path: '/admin/app_route', title: 'Route', icon: 'camera-foto-solid' },
-                { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
-                { path: '/merchants/product_categories', title: 'Merchant Product Categories', icon: 'camera-foto-solid' },
+            { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
+            { path: '/merchants/product_categories', title: 'Merchant Product Categories', icon: 'camera-foto-solid' },
         ]
     },
     {
@@ -63,7 +63,8 @@ export const MENUS = [
         path: '#', title: 'Users', icon: null, children: [
 
             { path: '/users', title: 'Users', icon: 'book-solid' },
-            { path: '/users/placements', title: 'Placements', icon: 'book-solid' }
+            { path: '/users/placements', title: 'Placements', icon: 'book-solid' },
+            { path: '/users/referrals', title: 'Referrals', icon: 'book-solid' }
         ]
     },
     // {
@@ -83,7 +84,7 @@ export const MENUS = [
             { path: '/ewallets/swap_backs', title: 'Swap Back', icon: 'camera-foto-solid' },
             { path: '/ewallets/register_points', title: 'Register Points', icon: 'camera-foto-solid' },
             { path: '/ewallets/pay_instalment', title: 'Pay Instalment', icon: 'book-solid' }
-      
+
         ]
     },
 
