@@ -102,6 +102,7 @@
 
 <style>
 	:global(.jstree-default .jstree-anchor) {
+		width: 80%;
 		height: auto !important;
 		line-height: 1.5 !important;
 		white-space: normal !important;
