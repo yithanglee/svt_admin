@@ -337,9 +337,9 @@
 								
 								populateNow: false,
 								apiData: {  },
-								items: childData.items,
+								items: Array.isArray(childData.items) ? childData.items : [],
 								buttons: [],
-								columns: childData.columns
+								columns: childData.columns ?? []
 							}}
 						/>
 						<Button color="red" on:click={() => {

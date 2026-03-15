@@ -12,9 +12,8 @@
 	let module = data.module,
 		inputs = data.inputs;
 
-
-    function approveTransfer(data, checkPage, confirmModal){
-        console.log(data);
+	function approveTransfer(data, checkPage, confirmModal) {
+		console.log(data);
 
 		confirmModal(true, 'Are you sure to approve this swap back?', () => {
 			postData(
@@ -28,20 +27,33 @@
 				}
 			);
 		});
-    }
+	}
 
+	function viewDOChild(data, checkPage, confirmModal, openRowChild) {
+		const raw = data.swap_back_tx_check;
+		const items =
+			Array.isArray(raw) ? [...raw] : raw != null ? [raw] : [];
+		openRowChild({
+			title: 'Swap Back',
+			id: data.id,
+			items,
+			columns: [
+				{ label: 'Tx Hash', data: 'tx_hash' },
+				{ label: 'Status', data: 'status' },
+				{ label: 'Last Checked At', data: 'last_checked_at' }
+			]
+		});
+	}
 </script>
 
 <Datatable
-	data={{ canDelete: true,
+	data={{
+		canDelete: true,
 		inputs: inputs,
-		join_statements: JSON.stringify([
-		
-			{ user: 'user' }
-		]),
+		join_statements: JSON.stringify([{ user: 'user' }]),
 		search_queries: ['b.username'],
 		model: module,
-		preloads: ['user'],
+		preloads: ['user', 'swap_back_tx_check'],
 		customCols: [
 			{
 				title: 'General',
@@ -51,12 +63,19 @@
 					'treasury_address',
 					'amount',
 					'reason',
-				
+
 					{ label: 'status', selection: ['pending', 'approved', 'rejected'] }
 				]
 			}
 		],
-        buttons: [{name: 'Approve', onclickFn: approveTransfer, showCondition: (data) => data.status == 'pending'}],
+		buttons: [
+			{
+				name: 'Approve',
+				onclickFn: approveTransfer,
+				showCondition: (data) => data.status == 'pending'
+			},
+			{ name: 'View', onclickFn: viewDOChild }
+		],
 		columns: [
 			{ label: 'ID', data: 'id' },
 			{
@@ -84,7 +103,7 @@
 
 			{ label: 'User', data: 'username', through: ['user'] },
 
-			{ label: 'Amount', data: 'amount' },
+			{ label: 'Amount', data: 'amount' }
 		]
 	}}
 />
