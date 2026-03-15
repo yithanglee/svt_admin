@@ -98,8 +98,8 @@
 					}
 				]
 			},
-			{ label: 'User Wallet Address', data: 'user_wallet_address' },
-			{ label: 'Tx Hash', data: 'tx_hash' },
+			{ label: 'User Wallet Address', data: 'user_wallet_address', subtitle: { label: 'Tx Hash', data: 'tx_hash' } },
+		
 
 			{ label: 'User', data: 'username', through: ['user'] },
 
