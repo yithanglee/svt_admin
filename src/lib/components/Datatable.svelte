@@ -19,7 +19,8 @@
 		TableBodyCell,
 		TableBodyRow,
 		TableHead,
-		TableHeadCell
+		TableHeadCell,
+		Select
 	} from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import { isModalOpen } from '../stores/modal';
@@ -47,7 +48,7 @@
 		selectedData = {},
 		cac_url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT,
 		model = data.model;
-	let childData = {items: [], columns: []};
+	let childData = { items: [], columns: [] };
 	const itemsPerPage = 100;
 	let apiData = {
 		search: { regex: 'false', value: query != null ? query : '' },
@@ -72,6 +73,7 @@
 
 				keys.forEach((v, i) => {
 					if (query[v]) {
+						console.log('keys n value', [v, query[v]]);
 						slist.push(v + '=' + query[v]);
 					}
 				});
@@ -176,7 +178,6 @@
 	function openRowChild(data) {
 		console.log('openRowChild', data);
 		childData = data;
-
 	}
 	function deleteData(data) {
 		// need a confirmation button...
@@ -234,13 +235,31 @@
 			{#if data.search_queries != null}
 				{#if data.search_queries != []}
 					{#each data.search_queries as search_query}
+						{#if data.convertDropDown != null && data.convertDropDown.filter((v) => v.column == search_query).length > 0}
+							<Select
+								id="default-input"
+								bind:value={query['' + search_query.split('=')[0] + '']}
+								placeholder={search_query.split('.')[1]}
+							>
+								{#each data.convertDropDown as convertDropDown}
+									{#if convertDropDown.column == search_query.split('=')[0]}
+										{#each convertDropDown.list as list}
+											<option value={list.value}>{list.label}</option>
+										{/each}
+									{/if}
+								{/each}
+							</Select>
+						{/if}
+
 						{#each search_query.split('|') as single_query}
 							{#if !single_query.includes('=')}
-								<Input
-									id="default-input"
-									bind:value={query['' + single_query + '']}
-									placeholder={single_query.split('.')[1]}
-								/>
+								{#if data.convertDropDown != null && data.convertDropDown.filter((v) => v.column == search_query).length > 0}{:else}
+									<Input
+										id="default-input"
+										bind:value={query['' + single_query + '']}
+										placeholder={single_query.split('.')[1]}
+									/>
+								{/if}
 							{/if}
 						{/each}
 					{/each}
@@ -298,7 +317,12 @@
 									{#if button.showCondition(item)}
 										|
 										<a
-											on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn, openRowChild)}
+											on:click|preventDefault={button.onclickFn(
+												item,
+												checkPage,
+												confirmModalFn,
+												openRowChild
+											)}
 											href="#"
 											class="font-medium text-primary-600 hover:underline dark:text-primary-500"
 											>{button.name}</a
@@ -307,7 +331,12 @@
 								{:else}
 									|
 									<a
-										on:click|preventDefault={button.onclickFn(item, checkPage, confirmModalFn, openRowChild)}
+										on:click|preventDefault={button.onclickFn(
+											item,
+											checkPage,
+											confirmModalFn,
+											openRowChild
+										)}
 										href="#"
 										class="font-medium text-primary-600 hover:underline dark:text-primary-500"
 										>{button.name}</a
@@ -327,29 +356,30 @@
 				</TableBodyCell>
 			</TableBodyRow>
 			{#if item.id == childData.id}
-			<TableBodyRow>
-				<TableBodyCell colspan={columns.length }>
-					<div class="mt-4 w-full">
-						<SimpleTable
-						title={childData.title}
-							description={''}
-							data={{
-								
-								populateNow: false,
-								apiData: {  },
-								items: Array.isArray(childData.items) ? childData.items : [],
-								buttons: [],
-								columns: childData.columns ?? []
-							}}
-						/>
-						<Button color="red" on:click={() => {
-							childData = {items: [], columns: []};
-						}}>Close</Button>
-					</div>
-				</TableBodyCell>
-			</TableBodyRow>
+				<TableBodyRow>
+					<TableBodyCell colspan={columns.length}>
+						<div class="mt-4 w-full">
+							<SimpleTable
+								title={childData.title}
+								description={''}
+								data={{
+									populateNow: false,
+									apiData: {},
+									items: Array.isArray(childData.items) ? childData.items : [],
+									buttons: [],
+									columns: childData.columns ?? []
+								}}
+							/>
+							<Button
+								color="red"
+								on:click={() => {
+									childData = { items: [], columns: [] };
+								}}>Close</Button
+							>
+						</div>
+					</TableBodyCell>
+				</TableBodyRow>
 			{/if}
-			
 		{/each}
 	</TableBody>
 </Table>

@@ -22,7 +22,20 @@
 			// { corporate_account: 'corporate_account' },
 			{ user: 'user' }
 		]),
-		search_queries: ['b.username', 'b.fullname'],
+		search_queries: ['b.username', 'b.fullname', 'wallet_type'],
+		convertDropDown: [
+			{
+				column: 'wallet_type',
+				list: [
+					{ label: 'All', value: null },
+					{ label: 'Register', value: 'register' },
+					{ label: 'Merchant', value: 'asset' },
+					{ label: 'Crypto', value: 'active_token' },
+					{ label: 'Bonus', value: 'bonus' },
+					{ label: 'Product', value: 'product' }
+				]
+			}
+		],
 		model: module,
 		preloads: ['user'],
 		customCols: [
