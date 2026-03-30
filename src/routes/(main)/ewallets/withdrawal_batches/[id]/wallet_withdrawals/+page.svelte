@@ -50,7 +50,7 @@
 		columns: [
 			{ label: 'ID', data: 'id' },
 			{ label: 'Timestamp', data: 'inserted_at', formatDateTime: true, offset: 8 },
-		
+
 			{ label: 'Bank', data: 'bank_name' },
 			{ label: 'Acc No', data: 'bank_account_number' },
 			{
@@ -71,6 +71,7 @@
 			},
 
 			{ label: 'From', data: 'username', through: ['user'] },
+			{ label: 'IC Name', data: 'fullname', through: ['user'] },
 			{ label: 'Request (USD)', data: 'amount', className: 'text-right' },
 			{ label: 'Processing Fee (USD)', data: 'processing_fee', className: 'text-right' },
 			{ label: 'Request (MYR)', data: 'amount_in_myr', className: 'text-right' },
