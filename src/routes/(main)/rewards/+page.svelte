@@ -10,24 +10,45 @@
 </script>
 
 <Datatable
-	data={{canDelete: true,
+	data={{
+		canDelete: true,
 		inputs: inputs,
 		join_statements: JSON.stringify([
 			// { corporate_account: 'corporate_account' },
 			{ user: 'user' }
 		]),
-		search_queries: ['a.name|b.username|a.is_paid'],
+		search_queries: ['b.username', 'a.name', 'a.is_paid'],
+		convertDropDown: [
+			{
+				column: 'a.name',
+				list: [
+					{ label: 'All', value: null },
+					{ label: 'Matching Bonus', value: 'matching bonus' },
+					{ label: 'Elite Leader', value: 'elite leader' },
+					{ label: 'Team Bonus', value: 'team bonus' },
+					{ label: 'Sharing Bonus', value: 'sharing bonus' }
+				]
+			},
+			{
+				column: 'a.is_paid',
+				list: [
+					{ label: 'All', value: null },
+					{ label: 'Paid', value: true },
+					{ label: 'Unpaid', value: false }
+				]
+			}
+		],
 		model: module,
 		preloads: ['user'],
 		customCols: [
 			{
 				title: 'General',
-				list: ['id', {label: 'is_paid', boolean: true}]
+				list: ['id', { label: 'is_paid', boolean: true }]
 			}
 		],
 		columns: [
 			{ label: 'ID', data: 'id' },
-			
+
 			{ label: 'Sales ID', data: 'sales_id' },
 			{
 				label: 'Paid?',

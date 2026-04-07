@@ -72,7 +72,7 @@
 				console.log(keys);
 
 				keys.forEach((v, i) => {
-					if (query[v]) {
+					if (query[v] != null) {
 						console.log('keys n value', [v, query[v]]);
 						slist.push(v + '=' + query[v]);
 					}
