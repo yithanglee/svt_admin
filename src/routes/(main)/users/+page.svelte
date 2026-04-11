@@ -79,7 +79,36 @@
 		<Datatable
 			data={{canDelete: true,
 				inputs: inputs,
-				search_queries: ['a.username|a.phone'],
+				search_queries: ['a.username|a.phone', 'is_trader', 'rank_name', 'trader_qualify_by'],
+				convertDropDown: [
+					{
+						column: 'is_trader',
+						list: [
+							{ label: 'All', value: null },
+							{ label: 'Trader', value: true },
+							{ label: 'Not Trader', value: false }
+						]
+					},
+					{
+						column: 'rank_name',
+						list: [
+							{ label: 'All', value: null },
+							{ label: 'Bronze', value: 'Bronze' },
+							{ label: 'Silver', value: 'Silver' },
+							{ label: 'Gold', value: 'Gold' },
+							{ label: 'Diamond', value: 'Diamond' },
+							{ label: 'Platinum', value: 'Platinum' },
+						]
+					},
+					{
+						column: 'trader_qualify_by',
+						list: [
+							{ label: 'All', value: null },
+							{ label: 'Leg', value: 'leg' },
+							{ label: 'Diamond Trio', value: 'product_purchase' },
+						]
+					}
+				],
 				model: 'User',
 				preloads: ['rank'],
 				customCols: [
@@ -141,7 +170,23 @@
 							}
 						]
 					},
+					{
+						label: 'Trader?',
+						data: 'is_trader',
+						isBadge: true,
+						color: [
+							{
+								key: false,
+								value: 'yellow'
+							},
 
+							{
+								key: true,
+								value: 'green'
+							}
+						]
+					},
+					{ label: 'Qualify By', data: 'trader_qualify_by' },
 					{ label: 'Username', data: 'username' },
 					{ label: 'Phone/Email', data: 'phone', subtitle: { data: 'email' } },
 
