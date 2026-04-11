@@ -33,7 +33,7 @@
 		delete data.password;
 		map[module] = { ...data, id: primary_key };
 
-		console.log(map);
+		console.log('form map', map);
 
 		var form = document.getElementById('currentForm');
 		var formData = new FormData(form);

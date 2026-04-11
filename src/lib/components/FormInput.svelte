@@ -123,6 +123,7 @@
 		</div>
 	{:else if key.boolean == true}
 		<div class="w-full mx-4 my-2">
+		<input type="hidden" name={inputName(input.key)} value={false} />
 			<Label class="space-y-2">
 				{#if data[input.key]}
 					<Checkbox id={input.key} checked aria-data={data[input.key]} name={inputName(input.key)}
