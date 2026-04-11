@@ -10,7 +10,7 @@
 	var url = PHX_HTTP_PROTOCOL + PHX_ENDPOINT;
 	function showCondition2(data) {
 		var bool = false;
-		
+
 		if (data.status == 'pending_payment') {
 			bool = true;
 		}
@@ -18,21 +18,20 @@
 	}
 	function showCondition(data) {
 		var bool = false;
-		if (data.payment == null ) {
+		if (data.payment == null) {
 			return bool;
 		}
 		if (data.payment.billplz_code != null) {
-			if (data.status != "pending_payment") {
+			if (data.status != 'pending_payment') {
 				return false;
 			}
 			bool = true;
 		}
-		
+
 		return bool;
 	}
 	function downloadCO(data, checkPage, confirmModal) {
-		window.open( url + "/pdf?id=" + data.id, '_blank').focus();
-
+		window.open(url + '/pdf?id=' + data.id, '_blank').focus();
 	}
 	function approveTransfer2(data, checkPage, confirmModal) {
 		console.log(data);
@@ -69,23 +68,32 @@
 </script>
 
 <Datatable
-	data={{appendQueries: {merchant_id: "null"},
+	data={{
+		appendQueries: { merchant_id: 'null' },
 		inputs: inputs,
 		join_statements: JSON.stringify([
 			// { corporate_account: 'corporate_account' },
 			{ user: 'user' }
 		]),
-		search_queries: ['a.id|b.username|b.fullname'],
+		search_queries: ['a.id|b.username|b.fullname|a.is_maintenance=false'],
 		model: 'Sale',
 		preloads: ['user', 'sales_person', 'payment'],
 		buttons: [
-			{ name: 'Download CO (PDF)', onclickFn: downloadCO } , 
-			{ name: 'Manual Approve (Razer)', onclickFn: approveTransfer, showCondition: showCondition } , 
-			{ name: 'Manual Approve', onclickFn: approveTransfer2, showCondition: showCondition2 }],
+			{ name: 'Download CO (PDF)', onclickFn: downloadCO },
+			{ name: 'Manual Approve (Razer)', onclickFn: approveTransfer, showCondition: showCondition },
+			{ name: 'Manual Approve', onclickFn: approveTransfer2, showCondition: showCondition2 }
+		],
 		customCols: [
 			{
 				title: 'Order',
-				list: ['id', { label: 'status', selection: ['processing', 'sent', 'pending_delivery', 'complete', 'cancelled'] }, 'remarks']
+				list: [
+					'id',
+					{
+						label: 'status',
+						selection: ['processing', 'sent', 'pending_delivery', 'complete', 'cancelled']
+					},
+					'remarks'
+				]
 			},
 			{
 				title: 'Others',
@@ -99,7 +107,7 @@
 		],
 		columns: [
 			{ label: 'ID', data: 'id' },
-			{ label: 'Timestamp', data: 'inserted_at', formatDateTime: true , offset: 8},
+			{ label: 'Timestamp', data: 'inserted_at', formatDateTime: true, offset: 8 },
 			// {
 			// 	label: 'Delivery Ref',
 			// 	data: 'delivery_ref',

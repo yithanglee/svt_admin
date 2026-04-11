@@ -22,12 +22,17 @@
 		goto('/deliveries/' + data.id);
 	}
 	function viewDOChild(data, checkPage, confirmModal, openRowChild) {
-		openRowChild({title: 'Delivery Items', id: data.id, items: data.sales_items, columns: [
-			{ label: 'Img', data: 'img_url', showImg: true },
-			{ label: 'Name', data: 'item_name', subtitle: { label: 'Remarks', data: 'remarks' } },
-			
-			{ label: 'Qty', data: 'qty' }
-		]});
+		openRowChild({
+			title: 'Delivery Items',
+			id: data.id,
+			items: data.sales_items,
+			columns: [
+				{ label: 'Img', data: 'img_url', showImg: true },
+				{ label: 'Name', data: 'item_name', subtitle: { label: 'Remarks', data: 'remarks' } },
+
+				{ label: 'Qty', data: 'qty' }
+			]
+		});
 		console.log('viewDOChild', data.sales_items);
 	}
 	function showCondition(data) {
@@ -182,8 +187,8 @@
 			{ user: 'user' }
 		]),
 		search_queries: [
-			'a.id|b.username|b.fullname|a.is_instalment=false',
-			
+			'a.id|b.username|b.fullname|a.is_instalment=false|a.is_maintenance=false',
+
 			'a.has_freebies=true'
 		],
 		model: 'Sale',
