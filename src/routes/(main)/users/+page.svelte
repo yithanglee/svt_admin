@@ -128,6 +128,8 @@
 								title_key: 'name'
 							},
 							{ label: 'is_stockist', boolean: true },
+							{ label: 'is_trader', boolean: true },
+							{ label: 'trader_qualify_by', selection: ['leg', 'product_purchase'] },
 							{ label: 'stockist_type', selection: ['mobile', 'area', 'regional'] },
 						]
 					},
