@@ -79,7 +79,20 @@
 		<Datatable
 			data={{
 				inputs: inputs,
-				search_queries: ['a.username|a.phone'],
+				search_queries: ['a.username|a.phone', 'a.is_stockist'],
+				convertDropDown: [
+					{
+						column: 'rank_id',
+						list: 'Rank'
+					},
+					{
+						column: 'a.is_stockist',
+						list: [
+							{ label: 'Yes', value: true },
+							{ label: 'No', value: false }
+						]
+					}
+				],
 				model: 'User',
 				preloads: ['rank'],
 				customCols: [
