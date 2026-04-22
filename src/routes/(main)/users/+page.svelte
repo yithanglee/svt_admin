@@ -99,6 +99,7 @@
 								title_key: 'name'
 							},
 							{ label: 'is_stockist', boolean: true },
+							'stockist_fee_perc',
 							// { label: 'stockist_type', selection: ['mobile', 'area'] },
 						]
 					},
@@ -247,6 +248,10 @@
 				<Label class="space-y-2">
 					<span>Email</span>
 					<Input type="text" name="user[email]" placeholder="" />
+				</Label>
+				<Label class="space-y-2">
+					<span>Stockist fee (decimal, default 0.03)</span>
+					<Input type="number" step="any" name="user[stockist_fee_perc]" placeholder="0.03" />
 				</Label>
 				{#if isLoading}
 					<div class="text-center"><Spinner /></div>
