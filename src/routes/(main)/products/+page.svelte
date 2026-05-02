@@ -61,6 +61,7 @@
 				list: [
 					{ label: 'override_pv', alt_name: 'Override Payment DRP', boolean: true },
 					'override_perc',
+					'override_perc_max',
 					{ label: 'override_special_share_payout', boolean: true },
 					'override_special_share_payout_perc',
 					'id',
@@ -111,7 +112,8 @@
 					}
 				]
 			},
-			{ label: 'Register Perc', data: 'override_perc' },
+			{ label: 'Register Min Perc', data: 'override_perc' },
+			{ label: 'Register Max Perc', data: 'override_perc_max' },
 			{
 				label: 'Override Special Share?',
 				data: 'override_special_share_payout',
