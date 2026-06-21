@@ -112,7 +112,7 @@
 								title_key: 'name'
 							},
 							{ label: 'is_stockist', boolean: true },
-							'stockist_fee_perc',
+							'stockist_fee_perc'
 							// { label: 'stockist_type', selection: ['mobile', 'area'] },
 						]
 					},
@@ -131,10 +131,7 @@
 					},
 					{
 						title: 'Admin',
-						list: [
-							'temp_pin',
-							
-						]
+						list: ['temp_pin']
 					}
 				],
 				columns: [
@@ -182,7 +179,6 @@
 					<span>Under Username</span>
 					<Input type="text" name="to_new_placement_username" placeholder="" />
 				</Label>
-
 
 				{#if isLoading}
 					<div class="text-center"><Spinner /></div>
