@@ -12,9 +12,9 @@ export const MENUS = [
 
             { path: '/ranks', title: 'Rank', icon: 'book-solid' },
 
-    { path: '/announcements', title: 'Announcements', icon: 'book-solid' },
-    { path: '/slides', title: 'Slides', icon: 'book-solid' },
-      
+            { path: '/announcements', title: 'Announcements', icon: 'book-solid' },
+            { path: '/slides', title: 'Slides', icon: 'book-solid' },
+
         ]
     },
     {
@@ -26,13 +26,13 @@ export const MENUS = [
     },
 
     { path: '/cumulative_purchase_periods', title: 'Cumulative Purchase Periods', icon: 'book-solid' },
-    
+
     {
         path: '#', title: 'Commission', icon: null, children: [
             { path: '/rewards/summary', title: 'Commission Summary', icon: 'camera-foto-solid' },
             { path: '/rewards/member_summary', title: 'Member Summary', icon: 'camera-foto-solid' },
             { path: '/rewards/travel_fund_qualifiers', title: 'Travel Fund Qualifiers', icon: 'camera-foto-solid' },
-           
+
             { path: '/rewards/details', title: 'Commission Details', icon: 'camera-foto-solid' },
             { path: '/rewards', title: 'All Commission', icon: 'camera-foto-solid' },
             { path: '/rewards/royalty_users', title: 'Royalty Users', icon: 'camera-foto-solid' },
@@ -50,7 +50,7 @@ export const MENUS = [
         ]
     },
     { path: '/deliveries', title: 'Deliveries', icon: 'book-solid' },
- 
+
     { path: '/sales', title: 'Sales', icon: 'book-solid' },
     {
         path: '#', title: 'Stocks', icon: null, children: [
@@ -64,13 +64,14 @@ export const MENUS = [
         path: '#', title: 'Users', icon: null, children: [
 
             { path: '/users', title: 'Users', icon: 'book-solid' },
-            { path: '/users/placements', title: 'Placements', icon: 'book-solid' }
+            { path: '/users/placements', title: 'Placements', icon: 'book-solid' },
+            { path: '/users/referrals', title: 'Referrals', icon: 'book-solid' }
         ]
     },
     {
         path: '#', title: 'Merchants', icon: null, children: [
 
-           
+
             { path: '/merchants', title: 'Merchants', icon: 'book-solid' },
             { path: '/merchants/categories', title: 'Merchant Business Categories', icon: 'camera-foto-solid' },
             { path: '/merchants/sales', title: 'Merchant Sales', icon: 'camera-foto-solid' },
@@ -91,7 +92,7 @@ export const MENUS = [
             { path: '/ewallets/transfers', title: 'Transfers', icon: 'camera-foto-solid' },
             { path: '/ewallets/register_points', title: 'Register Points', icon: 'camera-foto-solid' },
             { path: '/ewallets/pay_instalment', title: 'Pay Instalment', icon: 'book-solid' }
-      
+
         ]
     },
 

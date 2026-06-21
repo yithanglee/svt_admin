@@ -41,6 +41,9 @@ importers:
       js-cookie:
         specifier: ^3.0.5
         version: 3.0.5
+      jstree:
+        specifier: ^3.3.17
+        version: 3.3.17
       phoenix:
         specifier: ^1.7.7
         version: 1.8.5
@@ -860,6 +863,9 @@ packages:
 
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
+
+  jstree@3.3.17:
+    resolution: {integrity: sha512-V0Pl1B6BIaxHUQMiWkol37QlhlBKoZA9RUeUmm95+UnV2QeZsj2QP1sOQl/m2EIOyZXOOxOHvR0SYZLSDC7EFw==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -2080,6 +2086,10 @@ snapshots:
   json-schema-traverse@0.4.1: {}
 
   json-stable-stringify-without-jsonify@1.0.1: {}
+
+  jstree@3.3.17:
+    dependencies:
+      jquery: 3.7.1
 
   keyv@4.5.4:
     dependencies:

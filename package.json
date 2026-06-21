@@ -39,6 +39,7 @@
 		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.43.2",
 		"flowbite-svelte-icons": "^0.3.6",
+		"jstree": "^3.3.17",
 		"jquery": "^3.7.0",
 		"js-cookie": "^3.0.5",
 		"phoenix": "^1.7.7",
